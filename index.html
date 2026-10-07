@@ -1,0 +1,4196 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ACRO GYM FITNESS</title>
+    <meta
+      name="description"
+      content="화이트 대리석 무드와 역도 로고 오프닝을 적용한 ACRO GYM FITNESS 홈페이지 시안입니다."
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23fbf8f2'/%3E%3Ccircle cx='32' cy='27' r='18' fill='none' stroke='%23c88a2a' stroke-width='5'/%3E%3Cpath d='M19 34h26' stroke='%23d9a441' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M23 44l5-10M41 44l-5-10' stroke='%23c88a2a' stroke-width='5' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='21' r='4' fill='%23d9a441'/%3E%3C/svg%3E"
+    />
+    <script>
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      if (window.location.hash) history.replaceState(null, "", window.location.pathname);
+      window.scrollTo(0, 0);
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f4ee;
+        --paper: rgba(255, 255, 255, 0.82);
+        --ink: #181512;
+        --muted: #6f675e;
+        --gold: #c88a2a;
+        --gold-bright: #e2b35b;
+        --charcoal: #22201d;
+        --line: rgba(42, 35, 26, 0.13);
+        --shadow: 0 24px 80px rgba(54, 42, 25, 0.16);
+        --nav-h: 72px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-snap-type: y mandatory;
+        scroll-padding-top: var(--nav-h);
+      }
+
+      html.free-video-scroll {
+        scroll-snap-type: none;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        background:
+          linear-gradient(120deg, rgba(255, 255, 255, 0.92), rgba(245, 239, 229, 0.78)),
+          radial-gradient(circle at 10% 10%, rgba(226, 179, 91, 0.22), transparent 24rem),
+          radial-gradient(circle at 92% 20%, rgba(255, 255, 255, 0.95), transparent 28rem),
+          var(--bg);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        letter-spacing: 0;
+      }
+
+      .snap-page {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+      }
+
+      .natural-snap-page {
+        scroll-snap-align: start;
+        scroll-snap-stop: normal;
+      }
+
+      body:not(.ready) {
+        overflow: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        background:
+          linear-gradient(118deg, transparent 0 14%, rgba(157, 145, 129, 0.18) 14.2% 14.5%, transparent 14.8% 100%),
+          linear-gradient(132deg, transparent 0 38%, rgba(192, 182, 166, 0.2) 38.2% 38.6%, transparent 38.9% 100%),
+          linear-gradient(104deg, transparent 0 64%, rgba(164, 151, 132, 0.16) 64.2% 64.5%, transparent 64.9% 100%),
+          linear-gradient(154deg, transparent 0 75%, rgba(213, 196, 170, 0.2) 75.2% 75.6%, transparent 75.9% 100%);
+        opacity: 0.85;
+        pointer-events: none;
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background-image:
+          radial-gradient(circle at 18% 40%, rgba(255, 255, 255, 0.88) 0 1px, transparent 1.5px),
+          radial-gradient(circle at 72% 64%, rgba(167, 146, 108, 0.18) 0 1px, transparent 1.5px);
+        background-size: 34px 34px, 52px 52px;
+        opacity: 0.55;
+        pointer-events: none;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .intro {
+        position: fixed;
+        inset: 0;
+        z-index: 30;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 50% 42%, rgba(226, 179, 91, 0.3), transparent 20rem),
+          linear-gradient(115deg, rgba(255, 255, 255, 0.98), rgba(239, 232, 220, 0.96)),
+          var(--bg);
+        animation: introExit 0.9s ease 5.2s forwards;
+      }
+
+      .intro::before {
+        content: "";
+        position: absolute;
+        inset: -15%;
+        background:
+          linear-gradient(115deg, transparent 0 42%, rgba(255, 255, 255, 0.75), transparent 58% 100%),
+          linear-gradient(128deg, transparent 0 23%, rgba(130, 118, 102, 0.16) 23.2% 23.6%, transparent 24% 100%),
+          linear-gradient(148deg, transparent 0 67%, rgba(178, 160, 132, 0.14) 67.2% 67.6%, transparent 68% 100%);
+        transform: translateX(-72%) skewX(-12deg);
+        animation: marbleLight 2.4s cubic-bezier(0.2, 0.7, 0.18, 1) 0.65s forwards;
+      }
+
+      .intro-stage {
+        position: relative;
+        width: min(78vw, 640px);
+        min-height: 420px;
+        display: grid;
+        place-items: center;
+        filter: drop-shadow(0 26px 54px rgba(89, 65, 25, 0.2));
+      }
+
+      .lifter {
+        position: absolute;
+        top: 12%;
+        width: min(42vw, 240px);
+        aspect-ratio: 1;
+        animation: lifterPower 1.2s cubic-bezier(0.28, 0.78, 0.22, 1.08) 1.7s forwards;
+      }
+
+      .emblem {
+        position: absolute;
+        inset: 13%;
+        border: 9px solid var(--gold);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.34);
+        box-shadow:
+          inset 0 0 0 7px rgba(255, 255, 255, 0.82),
+          inset 0 0 0 14px rgba(200, 138, 42, 0.24),
+          0 16px 40px rgba(200, 138, 42, 0.24);
+        opacity: 0;
+        transform: scale(0.68);
+        animation: emblemBuild 0.9s ease 0.7s forwards;
+      }
+
+      .emblem::before {
+        content: "";
+        position: absolute;
+        left: 44%;
+        top: 18%;
+        width: 12%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: var(--gold-bright);
+      }
+
+      .body-line,
+      .leg-left,
+      .leg-right {
+        position: absolute;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+        opacity: 0;
+        animation: limbOn 0.7s ease 1.05s forwards;
+      }
+
+      .body-line {
+        left: 24%;
+        right: 24%;
+        top: 53%;
+        height: 9px;
+      }
+
+      .body-line::before,
+      .body-line::after {
+        content: "";
+        position: absolute;
+        top: -6px;
+        width: 10px;
+        height: 21px;
+        border-radius: 4px;
+        background: var(--gold-bright);
+      }
+
+      .body-line::before {
+        left: -2px;
+      }
+
+      .body-line::after {
+        right: -2px;
+      }
+
+      .leg-left,
+      .leg-right {
+        top: 66%;
+        width: 10px;
+        height: 38px;
+        transform-origin: top;
+      }
+
+      .leg-left {
+        left: 38%;
+        transform: rotate(22deg);
+      }
+
+      .leg-right {
+        right: 38%;
+        transform: rotate(-22deg);
+      }
+
+      .barbell {
+        position: absolute;
+        left: 50%;
+        top: 55%;
+        width: min(60vw, 360px);
+        height: 18px;
+        transform: translate(-50%, 0);
+        animation: barbellLift 1.2s cubic-bezier(0.28, 0.78, 0.22, 1.08) 1.7s forwards;
+      }
+
+      .barbell::before {
+        content: "";
+        position: absolute;
+        left: 7%;
+        right: 7%;
+        top: 7px;
+        height: 4px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #8b6a38, var(--gold-bright), #8b6a38);
+      }
+
+      .plate {
+        position: absolute;
+        top: 0;
+        width: 18px;
+        height: 18px;
+        border-radius: 3px;
+        background: linear-gradient(180deg, var(--gold-bright), var(--gold));
+        box-shadow: 0 8px 18px rgba(116, 78, 24, 0.22);
+      }
+
+      .plate.left-a {
+        left: 0;
+      }
+
+      .plate.left-b {
+        left: 23px;
+      }
+
+      .plate.right-a {
+        right: 0;
+      }
+
+      .plate.right-b {
+        right: 23px;
+      }
+
+      .brand-word {
+        position: absolute;
+        bottom: 6%;
+        margin: 0;
+        font-size: clamp(3rem, 9vw, 7rem);
+        font-weight: 900;
+        line-height: 0.9;
+        text-align: center;
+        text-transform: uppercase;
+        color: var(--gold);
+        text-shadow:
+          0 1px 0 #fff3d6,
+          0 14px 28px rgba(116, 78, 24, 0.18);
+        opacity: 0;
+        transform: translateY(26px);
+        animation: wordOn 0.95s cubic-bezier(0.2, 0.7, 0.18, 1) 2.85s forwards;
+      }
+
+      .brand-word span {
+        display: block;
+        margin-top: 0.22em;
+        font-size: 0.28em;
+        font-weight: 850;
+        color: var(--charcoal);
+      }
+
+      .floor-shine {
+        position: absolute;
+        left: 50%;
+        bottom: 3.2rem;
+        width: min(72vw, 520px);
+        height: 2px;
+        transform: translateX(-50%);
+        overflow: hidden;
+        background: rgba(128, 111, 82, 0.18);
+      }
+
+      .floor-shine::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, transparent, var(--gold-bright), #fff, var(--gold), transparent);
+        transform: translateX(-100%);
+        animation: shineMove 1.1s ease-in-out 3.25s forwards;
+      }
+
+      .skip-intro {
+        position: absolute;
+        right: 1.2rem;
+        bottom: 1.2rem;
+        z-index: 3;
+        border: 1px solid rgba(63, 51, 35, 0.18);
+        border-radius: 999px;
+        padding: 0.65rem 0.9rem;
+        background: rgba(255, 255, 255, 0.55);
+        color: var(--ink);
+        cursor: pointer;
+        box-shadow: 0 10px 26px rgba(80, 62, 33, 0.12);
+        backdrop-filter: blur(12px);
+      }
+
+      .skip-intro:hover {
+        border-color: rgba(200, 138, 42, 0.8);
+      }
+
+      .site {
+        opacity: 0;
+        animation: siteOn 0.8s ease 5.65s forwards;
+      }
+
+      body.ready .intro {
+        display: none;
+      }
+
+      body.ready .site {
+        opacity: 1;
+        animation: none;
+      }
+
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.2rem;
+        min-height: var(--nav-h);
+        padding: 0 7vw;
+        background: rgba(255, 255, 255, 0.72);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(22px);
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .logo-badge {
+        width: 35px;
+        aspect-ratio: 1;
+        border: 3px solid var(--gold);
+        border-radius: 50%;
+        position: relative;
+        background: rgba(255, 255, 255, 0.6);
+      }
+
+      .logo-badge::before {
+        content: "";
+        position: absolute;
+        left: 8px;
+        right: 8px;
+        top: 17px;
+        height: 3px;
+        border-radius: 3px;
+        background: var(--gold-bright);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: clamp(1rem, 3vw, 2.5rem);
+        color: var(--muted);
+        font-size: 0.95rem;
+        font-weight: 800;
+      }
+
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        border: 1px solid rgba(200, 138, 42, 0.32);
+        border-radius: 4px;
+        padding: 0 1rem;
+        background: linear-gradient(135deg, #c88a2a, #f0c86e);
+        color: #17120b;
+        font-weight: 900;
+        box-shadow: 0 14px 30px rgba(200, 138, 42, 0.18);
+      }
+
+      .cta-bubble-wrap {
+        position: relative;
+        display: inline-flex;
+      }
+
+      .gift-bubble {
+        position: absolute;
+        right: -0.55rem;
+        top: -1.55rem;
+        z-index: 2;
+        border: 1px solid rgba(200, 138, 42, 0.34);
+        border-radius: 999px;
+        padding: 0.38rem 0.68rem;
+        background: #fff7df;
+        color: #b46f00;
+        font-size: 0.78rem;
+        font-weight: 950;
+        white-space: nowrap;
+        box-shadow: 0 12px 26px rgba(200, 138, 42, 0.2);
+        animation: bubblePop 1.8s ease-in-out infinite;
+      }
+
+      .gift-bubble::after {
+        content: "";
+        position: absolute;
+        right: 1.05rem;
+        bottom: -0.36rem;
+        width: 0.7rem;
+        aspect-ratio: 1;
+        background: #fff7df;
+        border-right: 1px solid rgba(200, 138, 42, 0.34);
+        border-bottom: 1px solid rgba(200, 138, 42, 0.34);
+        transform: rotate(45deg);
+      }
+
+      .hero {
+        position: relative;
+        height: calc(100svh - var(--nav-h));
+        min-height: 680px;
+        display: grid;
+        align-items: center;
+        padding: clamp(3.2rem, 6vh, 5rem) 7vw clamp(7.8rem, 13vh, 10rem);
+        overflow: hidden;
+        background:
+          linear-gradient(100deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.63) 46%, rgba(250, 246, 238, 0.86)),
+          radial-gradient(circle at 76% 32%, rgba(226, 179, 91, 0.24), transparent 22rem);
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(118deg, transparent 0 28%, rgba(99, 88, 73, 0.12) 28.1% 28.4%, transparent 28.8% 100%),
+          linear-gradient(142deg, transparent 0 56%, rgba(200, 177, 138, 0.18) 56.2% 56.55%, transparent 56.9% 100%);
+        opacity: 0.9;
+      }
+
+      .hero::after {
+        display: none;
+      }
+
+      .hero-intro-card {
+        position: absolute;
+        right: 7vw;
+        top: 43%;
+        z-index: 2;
+        width: min(34vw, 430px);
+        aspect-ratio: 0.88;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        transform: translateY(-50%);
+        border: 1px solid rgba(255, 255, 255, 0.78);
+        border-radius: 18px;
+        background:
+          linear-gradient(118deg, transparent 0 25%, rgba(130, 118, 102, 0.13) 25.2% 25.6%, transparent 26% 100%),
+          radial-gradient(circle at 52% 36%, rgba(226, 179, 91, 0.32), transparent 15rem),
+          linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(241, 234, 223, 0.88));
+        box-shadow: var(--shadow);
+      }
+
+      .hero-intro-card::before {
+        content: "";
+        position: absolute;
+        inset: -20%;
+        z-index: 4;
+        background: linear-gradient(110deg, transparent 0 43%, rgba(255, 255, 255, 0.58), transparent 58% 100%);
+        transform: translateX(-78%) skewX(-14deg);
+        animation: introImageSweep 4.8s ease-in-out infinite;
+      }
+
+      .hero-intro-card .intro-emblem {
+        width: min(62%, 270px);
+      }
+
+      .hero-intro-card .intro-image-copy {
+        left: 1rem;
+        right: 1rem;
+        bottom: 1.25rem;
+        padding: 0.9rem;
+      }
+
+      .hero-logo-mark {
+        position: relative;
+        z-index: 3;
+        width: min(62%, 280px);
+        aspect-ratio: 1;
+        transform: translateY(-10%);
+        border: clamp(8px, 1.3vw, 13px) solid var(--gold);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.28);
+        box-shadow:
+          inset 0 0 0 9px rgba(255, 255, 255, 0.74),
+          inset 0 0 0 18px rgba(200, 138, 42, 0.2),
+          0 28px 70px rgba(200, 138, 42, 0.24);
+      }
+
+      .hero-logo-mark::before {
+        content: "";
+        position: absolute;
+        left: 44%;
+        top: 19%;
+        width: 12%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: var(--gold-bright);
+      }
+
+      .hero-logo-mark::after {
+        content: "";
+        position: absolute;
+        left: 23%;
+        right: 23%;
+        top: 53%;
+        height: 6%;
+        border-radius: 999px;
+        background:
+          linear-gradient(90deg, transparent 0 10%, var(--gold-bright) 10% 90%, transparent 90%),
+          linear-gradient(110deg, transparent 0 26%, var(--gold) 27% 34%, transparent 35%),
+          linear-gradient(70deg, transparent 0 66%, var(--gold) 67% 74%, transparent 75%);
+        background-repeat: no-repeat;
+        background-size: 100% 100%, 100% 240%, 100% 240%;
+        background-position: center;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        width: min(740px, 100%);
+      }
+
+      .eyebrow {
+        color: var(--gold);
+        font-size: 0.85rem;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 1rem 0;
+        font-size: clamp(3.4rem, 10.5vw, 8.4rem);
+        line-height: 0.86;
+        text-transform: uppercase;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        max-width: 590px;
+        color: var(--muted);
+        font-size: clamp(1rem, 1.5vw, 1.22rem);
+        line-height: 1.65;
+        font-weight: 650;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 2rem;
+      }
+
+      .ghost {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        border: 1px solid rgba(42, 35, 26, 0.18);
+        border-radius: 4px;
+        padding: 0 1rem;
+        background: rgba(255, 255, 255, 0.48);
+        color: var(--ink);
+        font-weight: 850;
+        backdrop-filter: blur(10px);
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.54);
+        backdrop-filter: blur(18px);
+      }
+
+      .hero .stats {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 3;
+      }
+
+      .stat {
+        padding: clamp(1.2rem, 4vw, 2.5rem) 7vw;
+        border-right: 1px solid var(--line);
+      }
+
+      .stat strong {
+        display: block;
+        color: var(--gold);
+        font-size: clamp(2rem, 5vw, 4rem);
+        line-height: 1;
+      }
+
+      .stat span {
+        display: block;
+        margin-top: 0.7rem;
+        color: var(--muted);
+        font-weight: 850;
+      }
+
+      .section {
+        min-height: calc(100svh - var(--nav-h));
+        padding: clamp(4rem, 9vw, 7rem) 7vw;
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .section h2 {
+        margin: 0;
+        max-width: 760px;
+        font-size: clamp(2rem, 5.5vw, 4.8rem);
+        line-height: 0.96;
+        text-transform: uppercase;
+      }
+
+      .section-head p {
+        max-width: 430px;
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+        font-weight: 650;
+      }
+
+      .programs {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .program {
+        min-height: 280px;
+        padding: 1.2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        border: 1px solid rgba(255, 255, 255, 0.72);
+        border-radius: 8px;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.8)),
+          radial-gradient(circle at 50% 18%, rgba(226, 179, 91, 0.24), transparent 11rem),
+          rgba(255, 255, 255, 0.64);
+        box-shadow: 0 18px 42px rgba(72, 58, 34, 0.1);
+      }
+
+      .program small {
+        color: var(--gold);
+        font-weight: 900;
+      }
+
+      .program h3 {
+        margin: 0.55rem 0;
+        font-size: 1.55rem;
+        text-transform: uppercase;
+      }
+
+      .program p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.55;
+        font-weight: 650;
+      }
+
+      .branch-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 45;
+        display: grid;
+        place-items: center;
+        padding: clamp(1rem, 3vw, 2rem);
+        background:
+          radial-gradient(circle at 72% 20%, rgba(226, 179, 91, 0.28), transparent 22rem),
+          rgba(24, 21, 18, 0.36);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        backdrop-filter: blur(14px);
+        transition: opacity 0.24s ease, visibility 0.24s ease;
+      }
+
+      .branch-modal.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .branch-modal-card {
+        width: min(1080px, 100%);
+        max-height: min(760px, 88vh);
+        display: grid;
+        grid-template-columns: 0.95fr 1.05fr;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.78);
+        border-radius: 20px;
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(247, 240, 229, 0.76)),
+          radial-gradient(circle at 15% 12%, rgba(226, 179, 91, 0.2), transparent 15rem);
+        box-shadow: 0 34px 110px rgba(26, 20, 12, 0.28);
+        transform: translateY(18px) scale(0.98);
+        transition: transform 0.24s ease;
+      }
+
+      .branch-modal.is-open .branch-modal-card {
+        transform: translateY(0) scale(1);
+      }
+
+      .branch-visual {
+        position: relative;
+        min-height: 520px;
+        padding: clamp(1.1rem, 2.6vw, 2rem);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+        background:
+          linear-gradient(118deg, transparent 0 32%, rgba(130, 118, 102, 0.14) 32.2% 32.6%, transparent 33% 100%),
+          radial-gradient(circle at 50% 32%, rgba(226, 179, 91, 0.28), transparent 16rem),
+          linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(233, 224, 211, 0.72));
+      }
+
+      .branch-visual::after {
+        content: "";
+        position: absolute;
+        inset: -15%;
+        background: linear-gradient(112deg, transparent 0 42%, rgba(255, 255, 255, 0.5), transparent 58% 100%);
+        transform: translateX(-72%) skewX(-12deg);
+        animation: introImageSweep 5.2s ease-in-out infinite;
+      }
+
+      .branch-modal-logo {
+        position: relative;
+        z-index: 2;
+        width: min(260px, 60%);
+        aspect-ratio: 1;
+        margin: auto;
+        border: clamp(8px, 1.2vw, 12px) solid var(--gold);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.28);
+        box-shadow:
+          inset 0 0 0 9px rgba(255, 255, 255, 0.7),
+          inset 0 0 0 18px rgba(200, 138, 42, 0.18),
+          0 28px 70px rgba(200, 138, 42, 0.23);
+      }
+
+      .branch-modal-logo::before {
+        content: "";
+        position: absolute;
+        left: 44%;
+        top: 19%;
+        width: 12%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: var(--gold-bright);
+      }
+
+      .branch-modal-logo::after {
+        content: "";
+        position: absolute;
+        left: 23%;
+        right: 23%;
+        top: 53%;
+        height: 6%;
+        border-radius: 999px;
+        background:
+          linear-gradient(90deg, transparent 0 10%, var(--gold-bright) 10% 90%, transparent 90%),
+          linear-gradient(110deg, transparent 0 26%, var(--gold) 27% 34%, transparent 35%),
+          linear-gradient(70deg, transparent 0 66%, var(--gold) 67% 74%, transparent 75%);
+        background-repeat: no-repeat;
+        background-size: 100% 100%, 100% 240%, 100% 240%;
+        background-position: center;
+      }
+
+      .branch-visual-note {
+        position: relative;
+        z-index: 2;
+        border: 1px solid rgba(255, 255, 255, 0.62);
+        border-radius: 16px;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.48);
+        box-shadow: 0 18px 54px rgba(72, 58, 34, 0.13);
+        backdrop-filter: blur(18px);
+      }
+
+      .branch-visual-note strong {
+        display: block;
+        font-size: clamp(1.35rem, 2.8vw, 2.2rem);
+        line-height: 1.02;
+      }
+
+      .branch-info {
+        position: relative;
+        padding: clamp(1.2rem, 3vw, 2.3rem);
+        padding-bottom: clamp(5.2rem, 8vw, 6.4rem);
+        overflow-y: auto;
+      }
+
+      .branch-info-slider {
+        margin-top: 1.2rem;
+        overflow: hidden;
+      }
+
+      .branch-info-track {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 100%;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+      }
+
+      .branch-info-track::-webkit-scrollbar {
+        display: none;
+      }
+
+      .branch-info-slide {
+        min-height: 310px;
+        padding-right: 0.25rem;
+        scroll-snap-align: start;
+      }
+
+      .branch-info-slide h4 {
+        margin: 0 0 0.75rem;
+        font-size: clamp(1.3rem, 2.4vw, 2rem);
+      }
+
+      .branch-modal-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 2;
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba(42, 35, 26, 0.12);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--ink);
+        font-size: 1.65rem;
+        font-weight: 900;
+        cursor: pointer;
+      }
+
+      .branch-info h3 {
+        margin: 0.4rem 0 0.55rem;
+        padding-right: 2.7rem;
+        font-size: clamp(2.2rem, 5vw, 4.2rem);
+        line-height: 0.96;
+      }
+
+      .branch-info-lead {
+        margin: 0;
+        color: var(--muted);
+        font-weight: 760;
+        line-height: 1.65;
+      }
+
+      .branch-info-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+        margin: 1.4rem 0;
+      }
+
+      .branch-info-item {
+        border: 1px solid rgba(200, 138, 42, 0.18);
+        border-radius: 14px;
+        padding: 0.95rem;
+        background: rgba(255, 255, 255, 0.58);
+      }
+
+      .branch-info-item span {
+        display: block;
+        color: var(--gold);
+        font-size: 0.78rem;
+        font-weight: 950;
+        text-transform: uppercase;
+      }
+
+      .branch-info-item strong {
+        display: block;
+        margin-top: 0.25rem;
+        color: var(--charcoal);
+        font-size: 1.04rem;
+        line-height: 1.35;
+      }
+
+      .branch-facilities {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+        margin: 1rem 0 1.4rem;
+      }
+
+      .branch-facilities span {
+        border: 1px solid rgba(42, 35, 26, 0.12);
+        border-radius: 999px;
+        padding: 0.55rem 0.75rem;
+        background: rgba(255, 255, 255, 0.56);
+        color: var(--charcoal);
+        font-weight: 850;
+      }
+
+      .branch-modal-actions {
+        position: absolute;
+        right: clamp(1rem, 3vw, 2.3rem);
+        bottom: clamp(1rem, 2.6vw, 1.8rem);
+        z-index: 3;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+      }
+
+      .branch-modal-actions .cta {
+        min-width: 132px;
+      }
+
+      .branch-slide-controls {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.8rem;
+        margin: 1rem 0 1.2rem;
+      }
+
+      .branch-slide-arrows {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .branch-slide-button {
+        width: 42px;
+        height: 42px;
+        border: 1px solid rgba(200, 138, 42, 0.28);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--charcoal);
+        font-size: 1.25rem;
+        font-weight: 950;
+        cursor: pointer;
+      }
+
+      .branch-slide-dots {
+        display: flex;
+        gap: 0.4rem;
+      }
+
+      .branch-slide-dot {
+        width: 2rem;
+        height: 4px;
+        border: 0;
+        border-radius: 999px;
+        background: rgba(63, 51, 35, 0.18);
+        cursor: pointer;
+      }
+
+      .branch-slide-dot.is-active {
+        background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 3rem;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.38);
+      }
+
+      .brand-panel {
+        position: relative;
+        min-height: min(70vw, 620px);
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        border-radius: 18px;
+        padding: 0;
+        background:
+          linear-gradient(118deg, transparent 0 25%, rgba(130, 118, 102, 0.13) 25.2% 25.6%, transparent 26% 100%),
+          linear-gradient(145deg, transparent 0 68%, rgba(178, 160, 132, 0.14) 68.2% 68.6%, transparent 69% 100%),
+          radial-gradient(circle at 52% 36%, rgba(226, 179, 91, 0.3), transparent 17rem),
+          linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(241, 234, 223, 0.86));
+        box-shadow: var(--shadow);
+      }
+
+      .brand-panel::before {
+        content: "";
+        position: absolute;
+        inset: -20%;
+        z-index: 2;
+        background: linear-gradient(110deg, transparent 0 43%, rgba(255, 255, 255, 0.56), transparent 58% 100%);
+        transform: translateX(-78%) skewX(-14deg);
+        animation: introImageSweep 4.8s ease-in-out infinite;
+      }
+
+      .brand-panel::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(36, 30, 22, 0.1)),
+          radial-gradient(circle at 50% 52%, transparent 0 42%, rgba(255, 255, 255, 0.62) 72%);
+        pointer-events: none;
+      }
+
+      .brand-panel img {
+        display: none;
+      }
+
+      .intro-emblem {
+        position: relative;
+        z-index: 3;
+        width: min(62%, 310px);
+        aspect-ratio: 1;
+        border: clamp(8px, 1.4vw, 14px) solid var(--gold);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.26);
+        box-shadow:
+          inset 0 0 0 9px rgba(255, 255, 255, 0.74),
+          inset 0 0 0 18px rgba(200, 138, 42, 0.2),
+          0 28px 70px rgba(200, 138, 42, 0.26);
+        animation: introEmblemFloat 2.8s ease-in-out infinite;
+      }
+
+      .intro-emblem::before {
+        content: "";
+        position: absolute;
+        left: 44%;
+        top: 19%;
+        width: 12%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: var(--gold-bright);
+      }
+
+      .intro-emblem::after {
+        content: "";
+        position: absolute;
+        left: 23%;
+        right: 23%;
+        top: 53%;
+        height: 6%;
+        border-radius: 999px;
+        background:
+          linear-gradient(90deg, transparent 0 10%, var(--gold-bright) 10% 90%, transparent 90%),
+          linear-gradient(110deg, transparent 0 26%, var(--gold) 27% 34%, transparent 35%),
+          linear-gradient(70deg, transparent 0 66%, var(--gold) 67% 74%, transparent 75%);
+        background-repeat: no-repeat;
+        background-size: 100% 100%, 100% 240%, 100% 240%;
+        background-position: center;
+      }
+
+      .intro-bar {
+        position: absolute;
+        left: 50%;
+        top: 43%;
+        z-index: 4;
+        width: min(68%, 390px);
+        height: 18px;
+        transform: translateX(-50%);
+        animation: introBarLift 2.8s ease-in-out infinite;
+      }
+
+      .intro-bar::before {
+        content: "";
+        position: absolute;
+        left: 8%;
+        right: 8%;
+        top: 7px;
+        height: 4px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #8b6a38, var(--gold-bright), #8b6a38);
+      }
+
+      .intro-bar span {
+        position: absolute;
+        top: 0;
+        width: 20px;
+        height: 18px;
+        border-radius: 4px;
+        background: linear-gradient(180deg, var(--gold-bright), var(--gold));
+      }
+
+      .intro-bar span:nth-child(1) {
+        left: 0;
+      }
+
+      .intro-bar span:nth-child(2) {
+        left: 25px;
+      }
+
+      .intro-bar span:nth-child(3) {
+        right: 25px;
+      }
+
+      .intro-bar span:nth-child(4) {
+        right: 0;
+      }
+
+      .intro-image-copy {
+        position: absolute;
+        left: clamp(1rem, 3vw, 2rem);
+        right: clamp(1rem, 3vw, 2rem);
+        bottom: clamp(1rem, 3vw, 2rem);
+        z-index: 3;
+        border: 1px solid rgba(255, 255, 255, 0.46);
+        border-radius: 16px;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.46);
+        box-shadow: 0 20px 60px rgba(68, 49, 24, 0.16);
+        backdrop-filter: blur(18px) saturate(1.15);
+      }
+
+      .intro-image-copy small,
+      .intro-image-copy strong {
+        display: block;
+      }
+
+      .intro-image-copy small {
+        color: var(--gold);
+        font-weight: 950;
+        text-transform: uppercase;
+      }
+
+      .intro-image-copy strong {
+        margin-top: 0.25rem;
+        color: var(--charcoal);
+        font-size: clamp(1.6rem, 4vw, 3.2rem);
+        line-height: 0.95;
+        text-transform: uppercase;
+      }
+
+      .brand-promise {
+        margin: 1.2rem 0 1.6rem;
+        border: 1px solid rgba(200, 138, 42, 0.24);
+        border-radius: 14px;
+        padding: clamp(1rem, 2.5vw, 1.4rem);
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(255, 248, 235, 0.56)),
+          radial-gradient(circle at 92% 24%, rgba(226, 179, 91, 0.24), transparent 12rem);
+        box-shadow: 0 18px 48px rgba(72, 58, 34, 0.1);
+      }
+
+      .brand-promise p {
+        margin: 0;
+        color: var(--charcoal);
+        font-size: clamp(1.55rem, 3.2vw, 2.8rem);
+        font-weight: 950;
+        line-height: 1.18;
+      }
+
+      .brand-promise span {
+        color: var(--gold);
+      }
+
+      .brand-content {
+        min-width: 0;
+      }
+
+      .brand-showcase {
+        position: relative;
+        overflow: hidden;
+        height: calc(100svh - var(--nav-h));
+        min-height: 640px;
+        display: grid;
+        grid-template-rows: 1fr auto;
+        padding: 0;
+        background: #f7f4ee;
+      }
+
+      .section.brand-showcase {
+        padding: 0;
+      }
+
+      .brand-showcase-head {
+        position: absolute;
+        top: clamp(1rem, 2.3vw, 2rem);
+        right: clamp(1rem, 3vw, 2.4rem);
+        z-index: 5;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        gap: 1rem;
+        margin: 0;
+      }
+
+      .brand-stage {
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        background: transparent;
+      }
+
+      .brand-slide-track {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 100%;
+        height: 100%;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+      }
+
+      .brand-slide-track::-webkit-scrollbar {
+        display: none;
+      }
+
+      .brand-slide {
+        position: relative;
+        height: 100%;
+        min-height: 640px;
+        display: grid;
+        align-items: end;
+        padding: clamp(4rem, 7vw, 6rem) clamp(1.4rem, 5vw, 6rem) clamp(4.6rem, 7vw, 6.2rem);
+        overflow: hidden;
+        scroll-snap-align: start;
+        background-image: var(--brand-bg);
+        background-size: cover;
+        background-position: center;
+        isolation: isolate;
+      }
+
+      .brand-slide::before {
+        content: "";
+        position: absolute;
+        inset: -24px;
+        z-index: -2;
+        background: inherit;
+        filter: blur(14px) saturate(1.04);
+        transform: scale(1.04);
+      }
+
+      .brand-slide::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background:
+          linear-gradient(90deg, rgba(247, 244, 238, 0.88), rgba(247, 244, 238, 0.54) 48%, rgba(255, 255, 255, 0.14)),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(34, 32, 29, 0.18)),
+          radial-gradient(circle at 84% 18%, rgba(226, 179, 91, 0.22), transparent 20rem);
+      }
+
+      .brand-slide-content {
+        width: min(980px, 100%);
+        border: 1px solid rgba(255, 255, 255, 0.72);
+        border-radius: 18px;
+        padding: clamp(1.45rem, 3.8vw, 3.25rem);
+        background: rgba(255, 255, 255, 0.62);
+        box-shadow: 0 28px 72px rgba(43, 34, 20, 0.18);
+        backdrop-filter: blur(24px) saturate(1.14);
+      }
+
+      .brand-slide-content small {
+        display: block;
+        color: var(--gold);
+        font-weight: 950;
+        text-transform: uppercase;
+      }
+
+      .brand-slide-content h3 {
+        margin: 0.55rem 0 0.85rem;
+        font-size: clamp(2.6rem, 5.8vw, 5.4rem);
+        line-height: 1.02;
+      }
+
+      .brand-slide-content p {
+        max-width: 46rem;
+        margin: 0;
+        color: var(--muted);
+        font-size: clamp(1.05rem, 1.55vw, 1.32rem);
+        font-weight: 760;
+        line-height: 1.68;
+      }
+
+      .brand-slide-content ul {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.7rem;
+        margin: 1.35rem 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .brand-slide-content li {
+        min-height: 98px;
+        border: 1px solid rgba(200, 138, 42, 0.22);
+        border-radius: 14px;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.46);
+        color: var(--charcoal);
+        font-size: clamp(1rem, 1.1vw, 1.15rem);
+        font-weight: 850;
+        line-height: 1.35;
+      }
+
+      .brand-slide-mark {
+        position: absolute;
+        top: clamp(3.2rem, 5vw, 4.8rem);
+        right: clamp(1.2rem, 3vw, 2.2rem);
+        width: clamp(92px, 14vw, 170px);
+        aspect-ratio: 1;
+        border: clamp(5px, 0.8vw, 9px) solid rgba(200, 138, 42, 0.82);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.34);
+        box-shadow: 0 20px 50px rgba(72, 58, 34, 0.16);
+        backdrop-filter: blur(10px);
+      }
+
+      .brand-slide-mark::before {
+        content: "";
+        position: absolute;
+        left: 44%;
+        top: 19%;
+        width: 12%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: var(--gold-bright);
+      }
+
+      .brand-slide-mark::after {
+        content: "";
+        position: absolute;
+        left: 23%;
+        right: 23%;
+        top: 53%;
+        height: 6%;
+        border-radius: 999px;
+        background:
+          linear-gradient(90deg, transparent 0 10%, var(--gold-bright) 10% 90%, transparent 90%),
+          linear-gradient(110deg, transparent 0 26%, var(--gold) 27% 34%, transparent 35%),
+          linear-gradient(70deg, transparent 0 66%, var(--gold) 67% 74%, transparent 75%);
+        background-repeat: no-repeat;
+        background-size: 100% 100%, 100% 240%, 100% 240%;
+        background-position: center;
+      }
+
+      .brand-slide-progress {
+        position: absolute;
+        left: clamp(1.4rem, 5vw, 6rem);
+        bottom: clamp(1.2rem, 2.5vw, 2rem);
+        z-index: 5;
+        display: flex;
+        gap: 0.45rem;
+        margin: 0;
+      }
+
+      .brand-slide-dot {
+        width: 2.2rem;
+        height: 4px;
+        border: 0;
+        border-radius: 999px;
+        background: rgba(63, 51, 35, 0.18);
+        cursor: pointer;
+      }
+
+      .brand-slide-dot.is-active {
+        background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+      }
+
+      .brand-scroll-head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-top: 1.35rem;
+      }
+
+      .brand-scroll-head p {
+        max-width: 34rem;
+        margin: 0.45rem 0 0;
+        color: var(--muted);
+        font-weight: 700;
+        line-height: 1.55;
+      }
+
+      .brand-scroll-controls {
+        display: flex;
+        gap: 0.55rem;
+        flex: 0 0 auto;
+      }
+
+      .brand-scroll-button {
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba(200, 138, 42, 0.28);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--charcoal);
+        font-size: 1.35rem;
+        font-weight: 900;
+        cursor: pointer;
+        box-shadow: 0 14px 34px rgba(72, 58, 34, 0.1);
+      }
+
+      .brand-scroll-button:hover {
+        border-color: rgba(200, 138, 42, 0.82);
+        background: rgba(255, 249, 236, 0.9);
+      }
+
+      .brand-story-scroll {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(310px, 72%);
+        gap: 1rem;
+        margin-top: 1rem;
+        padding: 0.25rem 0 1rem;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(200, 138, 42, 0.8) rgba(255, 255, 255, 0.4);
+      }
+
+      .brand-story-card {
+        scroll-snap-align: start;
+        min-height: 285px;
+        border: 1px solid rgba(255, 255, 255, 0.78);
+        border-radius: 16px;
+        padding: clamp(1.05rem, 2vw, 1.45rem);
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(255, 248, 236, 0.5)),
+          radial-gradient(circle at 92% 18%, rgba(226, 179, 91, 0.2), transparent 10rem);
+        box-shadow: 0 20px 54px rgba(72, 58, 34, 0.11);
+        backdrop-filter: blur(18px) saturate(1.08);
+      }
+
+      .brand-story-card small {
+        display: block;
+        color: var(--gold);
+        font-weight: 950;
+        text-transform: uppercase;
+      }
+
+      .brand-story-card h3 {
+        margin: 0.55rem 0 0.75rem;
+        font-size: clamp(1.45rem, 2.4vw, 2.1rem);
+        line-height: 1.12;
+      }
+
+      .brand-story-card p {
+        margin: 0;
+        color: var(--muted);
+        font-weight: 700;
+        line-height: 1.65;
+      }
+
+      .brand-story-card ul {
+        display: grid;
+        gap: 0.45rem;
+        margin: 1rem 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .brand-story-card li {
+        position: relative;
+        padding-left: 1rem;
+        color: var(--charcoal);
+        font-weight: 800;
+        line-height: 1.45;
+      }
+
+      .brand-story-card li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.65em;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--gold);
+      }
+
+      .checklist {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .check {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 1rem;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .check b {
+        color: var(--gold);
+      }
+
+      .check p {
+        margin: 0.35rem 0 0;
+        color: var(--muted);
+        line-height: 1.6;
+        font-weight: 650;
+      }
+
+      .event-band {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 2rem;
+        align-items: center;
+        background:
+          radial-gradient(circle at 82% 34%, rgba(226, 179, 91, 0.26), transparent 18rem),
+          rgba(255, 255, 255, 0.5);
+      }
+
+      .event-tabs {
+        display: inline-flex;
+        gap: 0.4rem;
+        margin-top: 1.4rem;
+        padding: 0.35rem;
+        border: 1px solid rgba(42, 35, 26, 0.1);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.62);
+      }
+
+      .event-tab {
+        min-height: 40px;
+        border: 0;
+        border-radius: 999px;
+        padding: 0 0.9rem;
+        background: transparent;
+        color: var(--muted);
+        font-weight: 900;
+        cursor: pointer;
+      }
+
+      .event-tab.is-active {
+        background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+        color: #17120b;
+      }
+
+      .event-panel {
+        border: 1px solid rgba(255, 255, 255, 0.86);
+        border-radius: 18px;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.66);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(18px);
+      }
+
+      .event-list {
+        display: grid;
+        gap: 0.8rem;
+      }
+
+      .event-card {
+        display: grid;
+        gap: 0.65rem;
+        border: 1px solid rgba(42, 35, 26, 0.1);
+        border-radius: 14px;
+        padding: 1rem;
+        background:
+          radial-gradient(circle at 92% 22%, rgba(226, 179, 91, 0.22), transparent 8rem),
+          rgba(255, 255, 255, 0.68);
+      }
+
+      .event-card.is-hidden {
+        display: none;
+      }
+
+      .event-card small {
+        color: var(--gold);
+        font-weight: 950;
+        text-transform: uppercase;
+      }
+
+      .event-card h3 {
+        margin: 0;
+        font-size: 1.45rem;
+      }
+
+      .event-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.55;
+        font-weight: 650;
+      }
+
+      .event-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .event-meta span {
+        border: 1px solid rgba(200, 138, 42, 0.2);
+        border-radius: 999px;
+        padding: 0.35rem 0.55rem;
+        background: rgba(255, 250, 240, 0.62);
+        color: var(--charcoal);
+        font-size: 0.84rem;
+        font-weight: 850;
+      }
+
+      .branch-section {
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr);
+        align-content: start;
+        padding-top: clamp(1.6rem, 3vw, 2.6rem);
+        padding-bottom: clamp(1.2rem, 2.4vw, 2rem);
+        background:
+          radial-gradient(circle at 78% 20%, rgba(226, 179, 91, 0.2), transparent 20rem),
+          rgba(255, 255, 255, 0.42);
+      }
+
+      .branch-section .section-head {
+        align-items: flex-start;
+        margin-bottom: clamp(1rem, 2vw, 1.4rem);
+      }
+
+      .branch-section h2 {
+        font-size: clamp(3rem, 6.4vw, 6.2rem);
+      }
+
+      .branch-board {
+        display: grid;
+        grid-template-columns: minmax(280px, 0.8fr) minmax(420px, 1.2fr);
+        gap: 1.2rem;
+        align-items: stretch;
+        min-height: 0;
+      }
+
+      .branch-list,
+      .subway-map {
+        border: 1px solid rgba(255, 255, 255, 0.82);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.64);
+        box-shadow: 0 18px 52px rgba(72, 58, 34, 0.12);
+        backdrop-filter: blur(18px);
+      }
+
+      .branch-list {
+        padding: clamp(0.85rem, 1.5vw, 1rem);
+      }
+
+      .branch-button {
+        width: 100%;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0.8rem;
+        align-items: center;
+        margin-top: 0.65rem;
+        border: 1px solid rgba(42, 35, 26, 0.12);
+        border-radius: 12px;
+        padding: clamp(0.74rem, 1.2vw, 0.9rem);
+        background: rgba(255, 255, 255, 0.68);
+        color: var(--ink);
+        text-align: left;
+        cursor: pointer;
+      }
+
+      .branch-button.is-active {
+        border-color: rgba(200, 138, 42, 0.55);
+        box-shadow: 0 14px 34px rgba(200, 138, 42, 0.16);
+      }
+
+      .branch-number {
+        width: 42px;
+        aspect-ratio: 1;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--gold-bright), var(--gold));
+        color: #fff;
+        font-weight: 950;
+      }
+
+      .branch-button strong,
+      .branch-button small {
+        display: block;
+      }
+
+      .branch-button small {
+        margin-top: 0.25rem;
+        color: var(--muted);
+        font-weight: 750;
+      }
+
+      .subway-map {
+        padding: clamp(0.85rem, 1.5vw, 1.1rem);
+      }
+
+      .map-stage {
+        position: relative;
+        height: clamp(300px, 42vh, 430px);
+        min-height: 0;
+        overflow: hidden;
+        border-radius: 12px;
+        background:
+          linear-gradient(120deg, rgba(255, 255, 255, 0.82), rgba(243, 238, 229, 0.66)),
+          linear-gradient(90deg, rgba(42, 35, 26, 0.05) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(42, 35, 26, 0.05) 1px, transparent 1px);
+        background-size: auto, 44px 44px, 44px 44px;
+      }
+
+      .metro-svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .metro-line {
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 16;
+        opacity: 0.88;
+      }
+
+      .line-2 {
+        stroke: #32a852;
+      }
+
+      .line-9 {
+        stroke: #c69a2f;
+      }
+
+      .line-sin {
+        stroke: #cf2f5d;
+      }
+
+      .station {
+        fill: #fff;
+        stroke: #34302a;
+        stroke-width: 4;
+        transition:
+          fill 0.25s ease,
+          stroke 0.25s ease,
+          transform 0.25s ease;
+        transform-box: fill-box;
+        transform-origin: center;
+      }
+
+      .station.is-active {
+        fill: var(--gold-bright);
+        stroke: var(--gold);
+        transform: scale(1.28);
+      }
+
+      .station-label {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        border: 1px solid rgba(42, 35, 26, 0.1);
+        border-radius: 999px;
+        padding: 0.28rem 0.5rem;
+        background: rgba(255, 255, 255, 0.76);
+        color: var(--charcoal);
+        font-size: 0.82rem;
+        font-weight: 850;
+        white-space: nowrap;
+        box-shadow: 0 10px 24px rgba(72, 58, 34, 0.09);
+      }
+
+      .station-label.is-active {
+        color: #fff;
+        background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+      }
+
+      .branch-detail {
+        margin-top: 0.8rem;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.75rem;
+      }
+
+      .branch-detail div {
+        border: 1px solid rgba(42, 35, 26, 0.1);
+        border-radius: 10px;
+        padding: 0.85rem;
+        background: rgba(255, 255, 255, 0.62);
+      }
+
+      .branch-detail span {
+        display: block;
+        color: var(--muted);
+        font-size: 0.84rem;
+        font-weight: 800;
+      }
+
+      .branch-detail strong {
+        display: block;
+        margin-top: 0.35rem;
+        font-size: 1rem;
+      }
+
+      .video-consult {
+        background:
+          radial-gradient(circle at 18% 20%, rgba(226, 179, 91, 0.22), transparent 18rem),
+          linear-gradient(145deg, rgba(255, 255, 255, 0.88), rgba(246, 240, 229, 0.72));
+      }
+
+      .consult-grid {
+        display: grid;
+        grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1.1fr);
+        gap: 1.25rem;
+        align-items: stretch;
+      }
+
+      .survey-card,
+      .recommend-card,
+      .call-room {
+        border: 1px solid rgba(255, 255, 255, 0.82);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.66);
+        box-shadow: 0 18px 52px rgba(72, 58, 34, 0.12);
+        backdrop-filter: blur(18px);
+      }
+
+      .survey-card {
+        padding: 1.2rem;
+      }
+
+      .survey-card h3,
+      .recommend-card h3,
+      .call-room h3 {
+        margin: 0 0 1rem;
+        font-size: 1.35rem;
+      }
+
+      .question {
+        display: grid;
+        gap: 0.55rem;
+        margin-top: 1.1rem;
+      }
+
+      .question span {
+        color: var(--charcoal);
+        font-weight: 850;
+      }
+
+      .choice-row {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.5rem;
+      }
+
+      .choice-row label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 0;
+        min-height: 48px;
+        border: 1px solid rgba(42, 35, 26, 0.14);
+        border-radius: 999px;
+        padding: 0.55rem 0.75rem;
+        background: rgba(255, 255, 255, 0.64);
+        color: var(--muted);
+        font-weight: 800;
+        line-height: 1.2;
+        text-align: center;
+        word-break: keep-all;
+        cursor: pointer;
+      }
+
+      .choice-row input {
+        width: 0;
+        height: 0;
+        opacity: 0;
+        position: absolute;
+      }
+
+      .choice-row label:has(input:checked) {
+        border-color: rgba(200, 138, 42, 0.55);
+        background: linear-gradient(135deg, rgba(226, 179, 91, 0.32), rgba(255, 255, 255, 0.86));
+        color: var(--ink);
+      }
+
+      .survey-submit {
+        width: min(180px, 100%);
+        margin: 1.25rem 0 0 auto;
+      }
+
+      .location-search {
+        display: grid;
+        gap: 0.7rem;
+      }
+
+      .location-tabs {
+        display: inline-flex;
+        width: fit-content;
+        gap: 0.35rem;
+        padding: 0.3rem;
+        border: 1px solid rgba(42, 35, 26, 0.1);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.62);
+      }
+
+      .location-tab {
+        min-height: 36px;
+        border: 0;
+        border-radius: 999px;
+        padding: 0 0.85rem;
+        background: transparent;
+        color: var(--muted);
+        font-weight: 900;
+        cursor: pointer;
+      }
+
+      .location-tab.is-active {
+        background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+        color: #17120b;
+      }
+
+      .location-input {
+        width: 100%;
+        min-height: 48px;
+        border: 1px solid rgba(42, 35, 26, 0.14);
+        border-radius: 12px;
+        padding: 0 0.9rem;
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--ink);
+        font: inherit;
+        font-weight: 800;
+        outline: none;
+      }
+
+      .extra-input {
+        width: 100%;
+        min-height: 112px;
+        resize: vertical;
+        border: 1px solid rgba(42, 35, 26, 0.14);
+        border-radius: 14px;
+        padding: 0.9rem;
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--ink);
+        font: inherit;
+        font-weight: 750;
+        line-height: 1.5;
+        outline: none;
+      }
+
+      .location-input:focus,
+      .extra-input:focus {
+        border-color: rgba(200, 138, 42, 0.55);
+        box-shadow: 0 0 0 4px rgba(226, 179, 91, 0.14);
+      }
+
+      .nearby-list {
+        max-height: 168px;
+        overflow-y: auto;
+        display: grid;
+        gap: 0.5rem;
+        padding-right: 0.2rem;
+      }
+
+      .nearby-card {
+        width: 100%;
+        border: 1px solid rgba(42, 35, 26, 0.1);
+        border-radius: 12px;
+        padding: 0.75rem 0.85rem;
+        background: rgba(255, 255, 255, 0.62);
+        color: var(--ink);
+        text-align: left;
+        cursor: pointer;
+      }
+
+      .nearby-card.is-active {
+        border-color: rgba(200, 138, 42, 0.5);
+        background: linear-gradient(135deg, rgba(226, 179, 91, 0.22), rgba(255, 255, 255, 0.82));
+      }
+
+      .nearby-card strong,
+      .nearby-card small {
+        display: block;
+      }
+
+      .nearby-card small {
+        margin-top: 0.25rem;
+        color: var(--muted);
+        font-weight: 750;
+      }
+
+      .analysis {
+        margin-top: 1.25rem;
+        padding: 1rem;
+        border: 1px solid rgba(200, 138, 42, 0.22);
+        border-radius: 10px;
+        background: rgba(255, 250, 240, 0.72);
+        color: var(--muted);
+        line-height: 1.55;
+        font-weight: 650;
+      }
+
+      .recommend-card {
+        display: grid;
+        grid-template-rows: auto 1fr;
+        min-height: 100%;
+        overflow: hidden;
+      }
+
+      .recommend-head {
+        padding: 1.2rem 1.2rem 0;
+      }
+
+      .recommend-head .lead {
+        margin: -0.35rem 0 0;
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .trainer-list {
+        display: grid;
+        gap: 0.75rem;
+        padding: 1.2rem;
+      }
+
+      .trainer-button {
+        width: 100%;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 0.9rem;
+        align-items: center;
+        border: 1px solid rgba(42, 35, 26, 0.12);
+        border-radius: 10px;
+        padding: 0.9rem;
+        background: rgba(255, 255, 255, 0.62);
+        color: var(--ink);
+        text-align: left;
+        cursor: pointer;
+      }
+
+      .trainer-button.is-active {
+        border-color: rgba(200, 138, 42, 0.55);
+        box-shadow: 0 14px 32px rgba(200, 138, 42, 0.16);
+      }
+
+      .avatar {
+        width: 56px;
+        aspect-ratio: 1;
+        display: grid;
+        place-items: center;
+        border-radius: 16px;
+        background:
+          radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.95) 0 12%, transparent 13%),
+          linear-gradient(135deg, var(--gold-bright), var(--gold));
+        color: #fff;
+        font-weight: 950;
+      }
+
+      .trainer-button strong,
+      .trainer-button small {
+        display: block;
+      }
+
+      .trainer-button small {
+        margin-top: 0.25rem;
+        color: var(--muted);
+        font-weight: 750;
+      }
+
+      .match-score {
+        color: var(--gold);
+        font-weight: 950;
+      }
+
+      .call-room {
+        position: fixed;
+        inset: 0;
+        z-index: 60;
+        display: block;
+        margin: 0;
+        overflow: hidden;
+        padding: 0;
+        background:
+          radial-gradient(circle at 18% 18%, rgba(226, 179, 91, 0.2), transparent 24rem),
+          linear-gradient(135deg, rgba(16, 14, 12, 0.92), rgba(52, 43, 30, 0.88));
+        opacity: 0;
+        pointer-events: none;
+        transform: scale(0.985);
+        transition:
+          opacity 0.22s ease,
+          transform 0.22s ease;
+        backdrop-filter: blur(18px);
+      }
+
+      .call-room.is-open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: scale(1);
+      }
+
+      body.in-call {
+        overflow: hidden;
+      }
+
+      .call-topbar {
+        position: absolute;
+        top: clamp(0.8rem, 2vw, 1.5rem);
+        left: clamp(0.8rem, 2vw, 1.5rem);
+        right: clamp(0.8rem, 2vw, 1.5rem);
+        z-index: 4;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.95rem 1.05rem;
+        border: 1px solid rgba(255, 255, 255, 0.38);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.44);
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(22px) saturate(1.22);
+        opacity: 0;
+        transform: translateY(-14px);
+        transition:
+          opacity 0.65s ease,
+          transform 0.65s ease;
+      }
+
+      .call-room.details-visible .call-topbar {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .call-topbar-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+
+      .close-call {
+        width: 42px;
+        aspect-ratio: 1;
+        border: 1px solid rgba(42, 35, 26, 0.14);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--ink);
+        font-size: 1.3rem;
+        font-weight: 800;
+        cursor: pointer;
+      }
+
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        border: 1px solid rgba(200, 138, 42, 0.24);
+        border-radius: 999px;
+        padding: 0.45rem 0.7rem;
+        background: rgba(255, 255, 255, 0.62);
+        color: var(--muted);
+        font-size: 0.86rem;
+        font-weight: 850;
+      }
+
+      .status-pill::before {
+        content: "";
+        width: 8px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: #2fb66d;
+        box-shadow: 0 0 0 5px rgba(47, 182, 109, 0.12);
+      }
+
+      .connecting-screen {
+        position: absolute;
+        inset: 0;
+        z-index: 7;
+        display: grid;
+        place-items: center;
+        background:
+          radial-gradient(circle at 50% 42%, rgba(226, 179, 91, 0.22), transparent 18rem),
+          rgba(238, 232, 221, 0.34);
+        opacity: 0;
+        pointer-events: none;
+        transition:
+          opacity 0.55s ease,
+          transform 0.55s ease;
+        backdrop-filter: blur(14px);
+      }
+
+      .call-room.is-connecting .connecting-screen {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .call-room.is-connected .connecting-screen {
+        opacity: 0;
+        transform: scale(1.03);
+      }
+
+      .connecting-card {
+        width: min(460px, calc(100vw - 2rem));
+        border: 1px solid rgba(255, 255, 255, 0.48);
+        border-radius: 22px;
+        padding: 1.35rem;
+        background: rgba(255, 255, 255, 0.52);
+        box-shadow: 0 28px 90px rgba(0, 0, 0, 0.18);
+        text-align: center;
+        backdrop-filter: blur(22px) saturate(1.2);
+      }
+
+      .connecting-card small,
+      .connecting-card strong,
+      .connecting-card span {
+        display: block;
+      }
+
+      .connecting-card small {
+        color: var(--gold);
+        font-weight: 950;
+        text-transform: uppercase;
+      }
+
+      .connecting-card strong {
+        margin-top: 0.4rem;
+        color: var(--charcoal);
+        font-size: clamp(1.45rem, 3vw, 2.2rem);
+        line-height: 1.15;
+      }
+
+      .connecting-card span {
+        margin-top: 0.6rem;
+        color: var(--muted);
+        font-weight: 800;
+      }
+
+      .connecting-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.45rem;
+        margin-top: 1rem;
+      }
+
+      .connecting-dots i {
+        width: 0.65rem;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: var(--gold);
+        animation: connectPulse 1s ease-in-out infinite;
+      }
+
+      .connecting-dots i:nth-child(2) {
+        animation-delay: 0.16s;
+      }
+
+      .connecting-dots i:nth-child(3) {
+        animation-delay: 0.32s;
+      }
+
+      .video-grid {
+        position: absolute;
+        inset: 0;
+        display: block;
+        background: transparent;
+      }
+
+      .video-main,
+      .video-side {
+        min-height: 0;
+        position: relative;
+        overflow: hidden;
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.75), rgba(239, 229, 210, 0.6)),
+          radial-gradient(circle at 50% 40%, rgba(226, 179, 91, 0.24), transparent 12rem);
+      }
+
+      .video-main {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(34, 29, 22, 0.16)),
+          radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.72), transparent 21rem),
+          linear-gradient(145deg, #d9d4cb, #bdb6aa 58%, #8f8577);
+      }
+
+      .video-main::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0 1px, transparent 1px 100%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 100%);
+        background-size: 72px 72px;
+        opacity: 0.22;
+      }
+
+      .ai-trainer {
+        width: min(520px, 58vw);
+        aspect-ratio: 0.78;
+        position: relative;
+        display: grid;
+        place-items: start center;
+        padding-top: 2rem;
+        opacity: 0;
+        transform: translateY(18px) scale(0.96);
+        transition:
+          opacity 0.75s ease,
+          transform 0.75s ease;
+      }
+
+      .call-room.is-connected .ai-trainer {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      .ai-face {
+        width: clamp(128px, 16vw, 210px);
+        aspect-ratio: 1;
+        border-radius: 40% 40% 46% 46%;
+        background:
+          radial-gradient(circle at 36% 42%, #27231e 0 4px, transparent 5px),
+          radial-gradient(circle at 64% 42%, #27231e 0 4px, transparent 5px),
+          linear-gradient(180deg, #f1c69a, #d99b6c);
+        box-shadow: inset 0 20px 0 rgba(52, 38, 28, 0.62);
+        animation: trainerTalk 1.2s ease-in-out infinite;
+      }
+
+      .ai-body {
+        width: clamp(220px, 28vw, 390px);
+        height: clamp(180px, 24vw, 330px);
+        margin-top: -4px;
+        border-radius: 42px 42px 18px 18px;
+        background:
+          linear-gradient(90deg, transparent 0 33%, rgba(255, 255, 255, 0.18) 33.5% 35%, transparent 35.5% 100%),
+          linear-gradient(135deg, #24211d, #5b4a32);
+        box-shadow: 0 24px 40px rgba(48, 36, 22, 0.16);
+      }
+
+      .caption {
+        position: absolute;
+        left: clamp(1rem, 3vw, 2rem);
+        right: auto;
+        bottom: clamp(6rem, 10vw, 8rem);
+        width: min(720px, calc(100vw - 2rem));
+        border: 1px solid rgba(255, 255, 255, 0.42);
+        border-radius: 16px;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.52);
+        color: var(--charcoal);
+        font-weight: 800;
+        line-height: 1.45;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+        backdrop-filter: blur(20px) saturate(1.2);
+        opacity: 0;
+        transform: translateY(16px);
+        transition:
+          opacity 0.65s ease 0.18s,
+          transform 0.65s ease 0.18s;
+      }
+
+      .call-room.details-visible .caption {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .video-side {
+        position: absolute;
+        top: clamp(7.4rem, 12vw, 8.8rem);
+        right: clamp(0.8rem, 2vw, 1.5rem);
+        z-index: 3;
+        width: min(360px, 30vw);
+        min-width: 280px;
+        max-height: calc(100vh - 13rem);
+        display: grid;
+        grid-template-rows: minmax(180px, 1fr) minmax(180px, 1fr);
+        gap: 0.85rem;
+        opacity: 0;
+        transform: translateX(18px);
+        transition:
+          opacity 0.7s ease 0.32s,
+          transform 0.7s ease 0.32s;
+      }
+
+      .call-room.details-visible .video-side {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .mini-video {
+        position: relative;
+        min-height: 180px;
+        padding: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.38);
+        border-radius: 16px;
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.5), rgba(245, 237, 224, 0.32)),
+          radial-gradient(circle at 50% 40%, rgba(200, 138, 42, 0.18), transparent 8rem);
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.18);
+        backdrop-filter: blur(20px) saturate(1.18);
+      }
+
+      .mini-video + .mini-video {
+        border-top: 1px solid rgba(255, 255, 255, 0.38);
+      }
+
+      .mini-video strong {
+        position: relative;
+        z-index: 1;
+      }
+
+      .class-bars {
+        position: absolute;
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+        display: grid;
+        gap: 0.45rem;
+      }
+
+      .class-bars span {
+        display: block;
+        height: 10px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--gold), rgba(226, 179, 91, 0.18));
+        animation: barPulse 1.6s ease-in-out infinite;
+      }
+
+      .class-bars span:nth-child(2) {
+        width: 74%;
+        animation-delay: 0.18s;
+      }
+
+      .class-bars span:nth-child(3) {
+        width: 52%;
+        animation-delay: 0.34s;
+      }
+
+      .call-actions {
+        position: absolute;
+        left: clamp(1rem, 3vw, 2rem);
+        bottom: clamp(1rem, 2vw, 1.4rem);
+        z-index: 4;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+        padding: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.38);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.42);
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.16);
+        backdrop-filter: blur(20px) saturate(1.18);
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 0.7s ease 0.48s,
+          transform 0.7s ease 0.48s;
+      }
+
+      .call-room.details-visible .call-actions {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .trial-modal {
+        position: absolute;
+        inset: 0;
+        z-index: 9;
+        display: grid;
+        place-items: center;
+        padding: 1rem;
+        background: rgba(32, 27, 20, 0.42);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.24s ease;
+        backdrop-filter: blur(12px);
+      }
+
+      .trial-modal.is-open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .trial-card {
+        width: min(620px, calc(100vw - 2rem));
+        border: 1px solid rgba(255, 255, 255, 0.48);
+        border-radius: 22px;
+        padding: clamp(1rem, 3vw, 1.5rem);
+        background: rgba(255, 255, 255, 0.72);
+        box-shadow: 0 32px 100px rgba(0, 0, 0, 0.22);
+        transform: translateY(14px) scale(0.98);
+        transition:
+          transform 0.24s ease,
+          opacity 0.24s ease;
+        backdrop-filter: blur(24px) saturate(1.18);
+      }
+
+      .trial-modal.is-open .trial-card {
+        transform: translateY(0) scale(1);
+      }
+
+      .trial-head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .trial-head h3 {
+        margin: 0.25rem 0 0;
+        font-size: clamp(1.7rem, 4vw, 2.5rem);
+        line-height: 1;
+      }
+
+      .trial-close {
+        width: 40px;
+        aspect-ratio: 1;
+        border: 1px solid rgba(42, 35, 26, 0.14);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--ink);
+        font-size: 1.2rem;
+        font-weight: 900;
+        cursor: pointer;
+      }
+
+      .trial-summary {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.6rem;
+        margin-bottom: 1rem;
+      }
+
+      .trial-summary div {
+        border: 1px solid rgba(42, 35, 26, 0.1);
+        border-radius: 12px;
+        padding: 0.8rem;
+        background: rgba(255, 255, 255, 0.56);
+      }
+
+      .trial-summary span,
+      .trial-field span {
+        display: block;
+        color: var(--muted);
+        font-size: 0.84rem;
+        font-weight: 850;
+      }
+
+      .trial-summary strong {
+        display: block;
+        margin-top: 0.28rem;
+      }
+
+      .trial-form {
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      .trial-form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+      }
+
+      .trial-field {
+        display: grid;
+        gap: 0.4rem;
+      }
+
+      .trial-field input,
+      .trial-field select {
+        width: 100%;
+        min-height: 46px;
+        border: 1px solid rgba(42, 35, 26, 0.14);
+        border-radius: 12px;
+        padding: 0 0.85rem;
+        background: rgba(255, 255, 255, 0.74);
+        color: var(--ink);
+        font: inherit;
+        font-weight: 800;
+      }
+
+      .trial-result {
+        display: none;
+        border: 1px solid rgba(47, 182, 109, 0.24);
+        border-radius: 12px;
+        padding: 0.85rem;
+        background: rgba(237, 255, 246, 0.72);
+        color: #236840;
+        font-weight: 850;
+      }
+
+      .trial-result.is-visible {
+        display: block;
+      }
+
+      .phone {
+        justify-self: center;
+        width: min(340px, 82vw);
+        border: 1px solid rgba(255, 255, 255, 0.86);
+        border-radius: 30px;
+        padding: 14px;
+        background: linear-gradient(180deg, #ffffff, #efe8dc);
+        box-shadow: var(--shadow);
+      }
+
+      .phone-screen {
+        min-height: 560px;
+        border-radius: 22px;
+        padding: 1rem;
+        background:
+          linear-gradient(180deg, rgba(226, 179, 91, 0.23), transparent 28%),
+          #fbf8f2;
+      }
+
+      .metric {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-top: 1rem;
+        padding: 1rem;
+        border: 1px solid rgba(42, 35, 26, 0.1);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.68);
+      }
+
+      .metric strong {
+        color: var(--gold);
+        font-size: 1.6rem;
+      }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 1.5rem;
+        padding: 2rem 7vw;
+        color: var(--muted);
+        border-top: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.64);
+      }
+
+      @keyframes marbleLight {
+        to {
+          transform: translateX(70%) skewX(-12deg);
+        }
+      }
+
+      @keyframes emblemBuild {
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes limbOn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes lifterPower {
+        0% {
+          transform: translateY(0) scaleY(1);
+        }
+        42% {
+          transform: translateY(22px) scaleY(0.93);
+        }
+        100% {
+          transform: translateY(-58px) scaleY(1.04);
+        }
+      }
+
+      @keyframes barbellLift {
+        0% {
+          transform: translate(-50%, 0);
+        }
+        42% {
+          transform: translate(-50%, 22px);
+        }
+        100% {
+          transform: translate(-50%, -116px);
+        }
+      }
+
+      @keyframes wordOn {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes shineMove {
+        to {
+          transform: translateX(100%);
+        }
+      }
+
+      @keyframes introImageSweep {
+        0%,
+        38% {
+          transform: translateX(-78%) skewX(-14deg);
+        }
+        72%,
+        100% {
+          transform: translateX(82%) skewX(-14deg);
+        }
+      }
+
+      @keyframes introEmblemFloat {
+        0%,
+        100% {
+          transform: translateY(0) scale(1);
+        }
+        48% {
+          transform: translateY(-16px) scale(1.03);
+        }
+      }
+
+      @keyframes introBarLift {
+        0%,
+        100% {
+          transform: translate(-50%, 20px);
+        }
+        48% {
+          transform: translate(-50%, -62px);
+        }
+      }
+
+      @keyframes trainerTalk {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(4px);
+        }
+      }
+
+      @keyframes barPulse {
+        0%,
+        100% {
+          opacity: 0.42;
+          transform: scaleX(0.86);
+          transform-origin: left;
+        }
+        50% {
+          opacity: 1;
+          transform: scaleX(1);
+        }
+      }
+
+      @keyframes bubblePop {
+        0%,
+        100% {
+          transform: translateY(0) scale(1);
+        }
+        50% {
+          transform: translateY(-3px) scale(1.03);
+        }
+      }
+
+      @keyframes connectPulse {
+        0%,
+        100% {
+          opacity: 0.35;
+          transform: translateY(0);
+        }
+        50% {
+          opacity: 1;
+          transform: translateY(-5px);
+        }
+      }
+
+      @keyframes introExit {
+        to {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+
+      @keyframes siteOn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 900px) {
+        html {
+          scroll-snap-type: y proximity;
+        }
+
+        .nav {
+          padding: 0 1rem;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .gift-bubble {
+          right: 0;
+          top: -1.35rem;
+          font-size: 0.72rem;
+        }
+
+        .intro-stage {
+          min-height: 360px;
+        }
+
+        .hero {
+          height: auto;
+          min-height: 780px;
+          padding: 7rem 1rem 3rem;
+          align-items: end;
+        }
+
+        .hero::after {
+          display: none;
+        }
+
+        .hero-intro-card {
+          top: 3.8rem;
+          right: 1rem;
+          width: min(54vw, 230px);
+          opacity: 0.86;
+          transform: none;
+        }
+
+        .hero .stats {
+          position: relative;
+          right: auto;
+          bottom: auto;
+          left: auto;
+          margin: 2rem -1rem 0;
+        }
+
+        .stats,
+        .programs,
+        .split,
+        .event-band,
+        .branch-board,
+        .consult-grid,
+        .video-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .stat {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+          padding: 1.4rem 1rem;
+        }
+
+        .section {
+          min-height: auto;
+          padding: 4rem 1rem;
+        }
+
+        .section-head {
+          display: grid;
+        }
+
+        .program {
+          min-height: 220px;
+        }
+
+        .branch-modal-card {
+          grid-template-columns: 1fr;
+          max-height: 90vh;
+        }
+
+        .branch-visual {
+          min-height: 260px;
+        }
+
+        .branch-modal-logo {
+          width: min(180px, 46%);
+        }
+
+        .branch-info-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .brand-scroll-head {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .brand-showcase-head {
+          align-items: flex-end;
+        }
+
+        .brand-slide {
+          min-height: 620px;
+          align-items: end;
+        }
+
+        .brand-slide-content ul {
+          grid-template-columns: 1fr;
+        }
+
+        .brand-slide-content li {
+          min-height: auto;
+        }
+
+        .brand-slide-mark {
+          opacity: 0.72;
+        }
+
+        .brand-story-scroll {
+          grid-auto-columns: minmax(280px, 88%);
+        }
+
+        .brand-story-card {
+          min-height: 300px;
+        }
+
+        .phone-screen {
+          min-height: 470px;
+        }
+
+        .map-stage {
+          min-height: 340px;
+        }
+
+        .branch-detail {
+          grid-template-columns: 1fr;
+        }
+
+        .choice-row {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .video-main,
+        .video-side {
+          min-height: 280px;
+        }
+
+        .call-room {
+          padding: 0;
+        }
+
+        .call-topbar {
+          align-items: flex-start;
+          border-radius: 14px;
+        }
+
+        .call-topbar-actions {
+          align-items: flex-end;
+          flex-direction: column-reverse;
+        }
+
+        .video-grid {
+          grid-template-rows: none;
+        }
+
+        .ai-trainer {
+          width: min(470px, 86vw);
+        }
+
+        .caption {
+          bottom: 8.2rem;
+        }
+
+        .video-side {
+          top: auto;
+          left: 0.75rem;
+          right: 0.75rem;
+          bottom: 5.6rem;
+          width: auto;
+          min-width: 0;
+          max-height: none;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: none;
+        }
+
+        .mini-video {
+          min-height: 128px;
+        }
+
+        .call-actions {
+          right: 0.75rem;
+          left: 0.75rem;
+          bottom: 0.75rem;
+          border-radius: 14px;
+        }
+
+        .footer {
+          display: grid;
+          padding: 1.5rem 1rem;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .brand-scroll-controls {
+          width: 100%;
+          justify-content: flex-end;
+        }
+
+        .brand-slide {
+          min-height: 660px;
+          padding: 4.6rem 0.9rem 4.8rem;
+        }
+
+        .brand-slide-content {
+          border-radius: 15px;
+        }
+
+        .brand-story-scroll {
+          grid-auto-columns: minmax(260px, 92%);
+        }
+
+        .branch-modal {
+          padding: 0.7rem;
+        }
+
+        .branch-info {
+          padding: 1rem;
+          padding-bottom: 5.2rem;
+        }
+
+        .branch-info-slide {
+          min-height: 340px;
+        }
+
+        .branch-modal-actions {
+          right: 1rem;
+          bottom: 1rem;
+        }
+
+        .choice-row {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="intro" id="intro" aria-label="ACRO GYM 브랜드 오프닝">
+      <div class="intro-stage" aria-hidden="true">
+        <div class="lifter">
+          <div class="emblem">
+            <span class="body-line"></span>
+            <span class="leg-left"></span>
+            <span class="leg-right"></span>
+          </div>
+        </div>
+        <div class="barbell">
+          <span class="plate left-a"></span>
+          <span class="plate left-b"></span>
+          <span class="plate right-a"></span>
+          <span class="plate right-b"></span>
+        </div>
+        <p class="brand-word">ACRO GYM<span>FITNESS</span></p>
+      </div>
+      <div class="floor-shine" aria-hidden="true"></div>
+      <button class="skip-intro" type="button" id="skipIntro">Skip</button>
+    </div>
+
+    <main class="site">
+      <nav class="nav" aria-label="주요 메뉴">
+        <a class="logo" href="#top" aria-label="ACRO GYM 홈">
+          <span class="logo-badge" aria-hidden="true"></span>
+          <span>ACRO GYM</span>
+        </a>
+        <div class="nav-links">
+          <a href="#top">Home</a>
+          <a href="#brand">브랜드</a>
+          <a href="#branches">호점 소개</a>
+          <a href="#events">이벤트</a>
+          <a href="#videoConsult">화상상담</a>
+        </div>
+        <span class="cta-bubble-wrap">
+          <span class="gift-bubble">사은품 이벤트</span>
+          <a class="cta" href="#videoConsult">화상상담 예약</a>
+        </span>
+      </nav>
+
+      <section class="hero snap-page" id="top">
+        <div class="hero-content">
+          <div class="eyebrow">Premium Marble Fitness Club</div>
+          <h1>White Space Strong Body</h1>
+          <p class="lead">
+            ACRO GYM FITNESS는 밝은 대리석 공간감, 금색 브랜드 마크, 앱 기반 운동 기록을
+            하나의 프리미엄 피트니스 경험으로 연결합니다.
+          </p>
+          <div class="actions">
+            <a class="cta" href="#videoConsult">운동 전 상담 설문</a>
+            <a class="ghost" href="#events">이벤트 보기</a>
+          </div>
+        </div>
+        <div class="hero-intro-card" aria-hidden="true">
+          <div class="hero-logo-mark"></div>
+          <div class="intro-image-copy">
+            <small>Brand Mark</small>
+            <strong>ACRO GYM<br />Fitness</strong>
+          </div>
+        </div>
+        <div class="stats" aria-label="브랜드 주요 수치">
+          <div class="stat"><strong>24H</strong><span>라이프스타일 맞춤 운영</span></div>
+          <div class="stat"><strong>1:1</strong><span>트레이너 중심 케어</span></div>
+          <div class="stat"><strong>APP</strong><span>운동 기록과 피드백 연결</span></div>
+        </div>
+      </section>
+
+      <section class="section branch-section snap-page" id="branches">
+        <div class="section-head">
+          <h2>Branch Subway Guide</h2>
+          <p>
+            호점을 선택하면 지하철 노선도에서 가까운 역과 위치가 바로 강조됩니다.
+            처음 방문하는 회원도 어느 동선이 편한지 한눈에 확인할 수 있습니다.
+          </p>
+        </div>
+        <div class="branch-board">
+          <div class="branch-list">
+            <div class="eyebrow">ACRO GYM Branches</div>
+            <h3>호점 소개</h3>
+            <button class="branch-button is-active" type="button" data-branch="gangnam">
+              <span class="branch-number">1</span>
+              <span><strong>강남 1호점</strong><small>2호선 · 신분당선 강남역</small></span>
+            </button>
+            <button class="branch-button" type="button" data-branch="seolleung">
+              <span class="branch-number">2</span>
+              <span><strong>선릉 2호점</strong><small>2호선 · 수인분당선 선릉역</small></span>
+            </button>
+            <button class="branch-button" type="button" data-branch="sinnonhyeon">
+              <span class="branch-number">3</span>
+              <span><strong>신논현 3호점</strong><small>9호선 · 신논현역</small></span>
+            </button>
+            <button class="branch-button" type="button" data-branch="yangjae">
+              <span class="branch-number">4</span>
+              <span><strong>양재 4호점</strong><small>신분당선 · 3호선 양재역</small></span>
+            </button>
+            <button class="branch-button" type="button" data-branch="euljiro">
+              <span class="branch-number">5</span>
+              <span><strong>을지로 5호점</strong><small>2호선 을지로입구역</small></span>
+            </button>
+          </div>
+
+          <div class="subway-map" aria-label="ACRO GYM 호점 지하철 노선도">
+            <div class="map-stage">
+              <svg class="metro-svg" viewBox="0 0 900 430" role="img" aria-label="강남권 지하철 노선도">
+                <path class="metro-line line-2" d="M90 258 C210 172, 315 150, 428 176 S650 262, 812 172" />
+                <path class="metro-line line-9" d="M72 116 H330 C446 116, 530 120, 812 118" />
+                <path class="metro-line line-sin" d="M388 48 C428 116, 454 174, 480 228 S552 334, 620 390" />
+                <circle class="station is-active" data-branch="gangnam" cx="468" cy="220" r="18" />
+                <circle class="station" data-branch="seolleung" cx="650" cy="250" r="18" />
+                <circle class="station" data-branch="sinnonhyeon" cx="382" cy="116" r="18" />
+                <circle class="station" data-branch="yangjae" cx="555" cy="322" r="18" />
+                <circle class="station" data-branch="euljiro" cx="250" cy="168" r="18" />
+                <circle class="station" cx="170" cy="216" r="13" />
+                <circle class="station" cx="760" cy="204" r="13" />
+              </svg>
+              <span class="station-label is-active" data-branch="gangnam" style="left: 52%; top: 53%">강남 1호점</span>
+              <span class="station-label" data-branch="seolleung" style="left: 72%; top: 61%">선릉 2호점</span>
+              <span class="station-label" data-branch="sinnonhyeon" style="left: 42%; top: 28%">신논현 3호점</span>
+              <span class="station-label" data-branch="yangjae" style="left: 62%; top: 77%">양재 4호점</span>
+              <span class="station-label" data-branch="euljiro" style="left: 28%; top: 40%">을지로 5호점</span>
+            </div>
+            <div class="branch-detail">
+              <div><span>가까운 역</span><strong id="branchStation">강남역 11번 출구</strong></div>
+              <div><span>도보</span><strong id="branchWalk">도보 3분</strong></div>
+              <div><span>추천 동선</span><strong id="branchRoute">2호선 · 신분당선</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="branch-modal" id="branchModal" aria-label="호점 상세 정보 창">
+          <div class="branch-modal-card" role="dialog" aria-modal="true" aria-labelledby="branchModalTitle">
+            <div class="branch-visual" aria-hidden="true">
+              <div class="branch-modal-logo"></div>
+              <div class="branch-visual-note">
+                <small class="eyebrow">Selected Branch</small>
+                <strong id="branchModalVisualName">강남 1호점</strong>
+              </div>
+            </div>
+            <div class="branch-info">
+              <button class="branch-modal-close" type="button" id="closeBranchModal" aria-label="호점 정보 닫기">×</button>
+              <div class="eyebrow">ACRO GYM Branch</div>
+              <h3 id="branchModalTitle">강남 1호점</h3>
+              <p class="branch-info-lead" id="branchModalLead">
+                강남역 중심 동선에 맞춘 프리미엄 트레이닝 지점입니다.
+              </p>
+              <div class="branch-info-slider">
+                <div class="branch-info-track" id="branchInfoTrack" aria-label="호점 상세 정보 슬라이드">
+                  <article class="branch-info-slide">
+                    <h4>방문 정보</h4>
+                    <div class="branch-info-grid">
+                      <div class="branch-info-item"><span>Station</span><strong id="branchModalStation">강남역 11번 출구</strong></div>
+                      <div class="branch-info-item"><span>Walk</span><strong id="branchModalWalk">도보 3분</strong></div>
+                      <div class="branch-info-item"><span>Hours</span><strong id="branchModalHours">평일 06:00 - 24:00</strong></div>
+                      <div class="branch-info-item"><span>Route</span><strong id="branchModalRoute">2호선 · 신분당선</strong></div>
+                    </div>
+                  </article>
+                  <article class="branch-info-slide">
+                    <h4>시설과 이용 포인트</h4>
+                    <div class="branch-facilities" id="branchModalFacilities"></div>
+                    <p class="branch-info-lead" id="branchModalFacilityLead">운동 목적에 따라 필요한 시설을 빠르게 확인할 수 있습니다.</p>
+                  </article>
+                  <article class="branch-info-slide">
+                    <h4>상담 추천 흐름</h4>
+                    <div class="branch-info-grid">
+                      <div class="branch-info-item"><span>Step 01</span><strong>위치와 목표 확인</strong></div>
+                      <div class="branch-info-item"><span>Step 02</span><strong>추천 트레이너 매칭</strong></div>
+                      <div class="branch-info-item"><span>Step 03</span><strong>화상상담 미리보기</strong></div>
+                      <div class="branch-info-item"><span>Step 04</span><strong>체험 수업 신청</strong></div>
+                    </div>
+                  </article>
+                </div>
+                <div class="branch-slide-controls">
+                  <div class="branch-slide-dots" aria-label="호점 상세 슬라이드 위치">
+                    <button class="branch-slide-dot is-active" type="button" data-branch-info-dot="0" aria-label="방문 정보 보기"></button>
+                    <button class="branch-slide-dot" type="button" data-branch-info-dot="1" aria-label="시설 정보 보기"></button>
+                    <button class="branch-slide-dot" type="button" data-branch-info-dot="2" aria-label="상담 흐름 보기"></button>
+                  </div>
+                  <div class="branch-slide-arrows">
+                    <button class="branch-slide-button" type="button" data-branch-info-scroll="-1" aria-label="이전 호점 정보">‹</button>
+                    <button class="branch-slide-button" type="button" data-branch-info-scroll="1" aria-label="다음 호점 정보">›</button>
+                  </div>
+                </div>
+              </div>
+              <div class="branch-modal-actions">
+                <a class="cta" href="#videoConsult" id="branchModalConsult">상담신청</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section snap-page" id="program">
+        <div class="section-head">
+          <h2>Built For Every Training Mode</h2>
+          <p>
+            처음 운동을 시작하는 회원부터 전문적인 바디 메이킹을 원하는 회원까지,
+            목적에 맞춰 프로그램을 고를 수 있게 구성했습니다.
+          </p>
+        </div>
+        <div class="programs">
+          <article class="program">
+            <small>01</small>
+            <h3>Strength</h3>
+            <p>머신과 프리웨이트 중심의 근력 향상 프로그램</p>
+          </article>
+          <article class="program">
+            <small>02</small>
+            <h3>Body Shape</h3>
+            <p>체성분과 루틴 데이터를 기반으로 한 바디 메이킹</p>
+          </article>
+          <article class="program">
+            <small>03</small>
+            <h3>Recovery</h3>
+            <p>통증 감소, 자세 교정, 회복 중심 컨디셔닝</p>
+          </article>
+          <article class="program">
+            <small>04</small>
+            <h3>Group PT</h3>
+            <p>함께 몰입하고 꾸준히 이어가는 소규모 트레이닝</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section brand-showcase snap-page" id="brand">
+        <div class="brand-showcase-head">
+          <div class="brand-scroll-controls" aria-label="브랜드 상세 페이지 이동">
+            <button class="brand-scroll-button" type="button" data-brand-scroll="-1" aria-label="이전 브랜드 페이지">‹</button>
+            <button class="brand-scroll-button" type="button" data-brand-scroll="1" aria-label="다음 브랜드 페이지">›</button>
+          </div>
+        </div>
+        <div class="brand-stage">
+          <div class="brand-slide-track" id="brandStoryScroll" aria-label="ACRO GYM 브랜드 상세 페이지">
+            <article class="brand-slide" style="--brand-bg: url('assets/brand-motto-bg.png')">
+              <div class="brand-slide-mark" aria-hidden="true"></div>
+              <div class="brand-slide-content">
+                <small>01 Motto</small>
+                <h3>운동이 일상으로 자리 잡는 곳</h3>
+                <p>
+                  ACRO GYM은 단기간의 자극보다 오래 지속되는 운동 습관을 중요하게 봅니다.
+                  첫 상담부터 생활 패턴, 이동 동선, 운동 가능 시간을 함께 확인합니다.
+                </p>
+                <ul>
+                  <li>지속 가능한 루틴 먼저 확인</li>
+                  <li>하루 흐름에 맞춘 운동 강도</li>
+                  <li>처음 와도 부담 없는 상담 경험</li>
+                </ul>
+              </div>
+            </article>
+            <article class="brand-slide" style="--brand-bg: url('assets/brand-education-bg.png')">
+              <div class="brand-slide-mark" aria-hidden="true"></div>
+              <div class="brand-slide-content">
+                <small>02 Education</small>
+                <h3>트레이너 교육과정</h3>
+                <p>
+                  상담 품질이 지점마다 달라지지 않도록 기본 응대, 자세 분석, 루틴 설계,
+                  체험 수업 안내 흐름을 하나의 교육과정으로 관리합니다.
+                </p>
+                <ul>
+                  <li>초기 상담 스크립트 교육</li>
+                  <li>통증/체형/경험별 루틴 분류</li>
+                  <li>이해하기 쉬운 설명 방식 훈련</li>
+                </ul>
+              </div>
+            </article>
+            <article class="brand-slide" style="--brand-bg: url('assets/brand-consulting-bg.png')">
+              <div class="brand-slide-mark" aria-hidden="true"></div>
+              <div class="brand-slide-content">
+                <small>03 Consulting</small>
+                <h3>화상상담 중심의 첫 만남</h3>
+                <p>
+                  방문 전 설문으로 목표와 위치를 먼저 파악하고, 맞는 트레이너를 추천해
+                  회원이 센터에 오기 전부터 상담받는 느낌을 만들었습니다.
+                </p>
+                <ul>
+                  <li>추천 지점과 트레이너 연결</li>
+                  <li>AI 자기소개 영상으로 부담 완화</li>
+                  <li>체험 수업 신청까지 자연스럽게 전환</li>
+                </ul>
+              </div>
+            </article>
+            <article class="brand-slide" style="--brand-bg: url('assets/brand-care-bg.png')">
+              <div class="brand-slide-mark" aria-hidden="true"></div>
+              <div class="brand-slide-content">
+                <small>04 Care</small>
+                <h3>등록 이후 관리 기준</h3>
+                <p>
+                  첫 등록 이후에도 운동 기록, 출석, 컨디션 변화를 기준으로 루틴을 조정합니다.
+                  회원이 혼자 남겨지지 않도록 피드백 흐름을 유지합니다.
+                </p>
+                <ul>
+                  <li>상담 내용을 다음 수업에 반영</li>
+                  <li>목표 변화에 따른 재설계</li>
+                  <li>지점별 공통 관리 기준 적용</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="brand-slide-progress" aria-label="브랜드 페이지 현재 위치">
+          <button class="brand-slide-dot is-active" type="button" data-brand-dot="0" aria-label="모토 페이지로 이동"></button>
+          <button class="brand-slide-dot" type="button" data-brand-dot="1" aria-label="교육과정 페이지로 이동"></button>
+          <button class="brand-slide-dot" type="button" data-brand-dot="2" aria-label="상담 방식 페이지로 이동"></button>
+          <button class="brand-slide-dot" type="button" data-brand-dot="3" aria-label="관리 기준 페이지로 이동"></button>
+        </div>
+      </section>
+
+      <section class="section event-band snap-page" id="events">
+        <div>
+          <div class="eyebrow">ACRO GYM Events</div>
+          <h2>Now Open And Previous Campaigns</h2>
+          <p class="lead">
+            현재 진행중인 이벤트와 지난 이벤트를 한 화면에서 전환해 확인할 수 있습니다.
+            시즌별 프로모션, 체험권, 챌린지 기록을 보기 쉽게 정리했습니다.
+          </p>
+          <div class="event-tabs" aria-label="이벤트 보기 전환">
+            <button class="event-tab is-active" type="button" data-event-filter="active">진행중</button>
+            <button class="event-tab" type="button" data-event-filter="past">지난 이벤트</button>
+          </div>
+          <div class="actions">
+            <a class="cta" href="#videoConsult">화상상담 시작</a>
+            <a class="ghost" href="#top">오프닝 다시 보기</a>
+          </div>
+        </div>
+        <div class="event-panel">
+          <div class="event-list">
+            <article class="event-card" data-event-status="active">
+              <small>진행중 · 2026.10.01 - 2026.10.31</small>
+              <h3>화이트 마블 오픈 체험권</h3>
+              <p>첫 방문 회원에게 1일 체험권과 인바디 상담을 제공합니다.</p>
+              <div class="event-meta"><span>전 지점</span><span>선착순 100명</span></div>
+            </article>
+            <article class="event-card" data-event-status="active">
+              <small>진행중 · 2026.10.03 - 2026.11.15</small>
+              <h3>AI 화상상담 매칭 이벤트</h3>
+              <p>운동 전 설문 후 추천 트레이너와 화상상담 예약 시 PT 체험권을 증정합니다.</p>
+              <div class="event-meta"><span>온라인 상담</span><span>PT 체험</span></div>
+            </article>
+            <article class="event-card is-hidden" data-event-status="past">
+              <small>종료 · 2026.08</small>
+              <h3>여름 바디 리셋 챌린지</h3>
+              <p>4주간 출석과 운동 볼륨을 기록하고 목표 달성 회원에게 리워드를 제공했습니다.</p>
+              <div class="event-meta"><span>4주 챌린지</span><span>출석 리워드</span></div>
+            </article>
+            <article class="event-card is-hidden" data-event-status="past">
+              <small>종료 · 2026.06</small>
+              <h3>친구 초대 듀오 PT</h3>
+              <p>친구와 함께 등록한 회원에게 듀오 PT 세션과 웰컴 키트를 제공했습니다.</p>
+              <div class="event-meta"><span>친구 초대</span><span>듀오 PT</span></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section video-consult natural-snap-page" id="videoConsult">
+        <div class="section-head">
+          <h2>Video Consultation Match</h2>
+          <p>
+            운동 전 상담 설문을 입력하면 목표와 컨디션을 간단히 분석해 어울리는
+            트레이너를 추천하고, 선택 즉시 화상상담처럼 보이는 소개 화면으로 이어집니다.
+          </p>
+        </div>
+
+        <div class="consult-grid">
+          <form class="survey-card" id="consultSurvey">
+            <h3>운동 전 상담 설문</h3>
+            <div class="question">
+              <span>가장 중요한 목표</span>
+              <div class="choice-row">
+                <label><input type="radio" name="goal" value="strength" checked /> 근력 향상</label>
+                <label><input type="radio" name="goal" value="shape" /> 체형 관리</label>
+                <label><input type="radio" name="goal" value="recovery" /> 통증/회복</label>
+              </div>
+            </div>
+            <div class="question">
+              <span>운동 경험</span>
+              <div class="choice-row">
+                <label><input type="radio" name="level" value="beginner" checked /> 처음/초급</label>
+                <label><input type="radio" name="level" value="steady" /> 꾸준히 운동</label>
+                <label><input type="radio" name="level" value="advanced" /> 고강도 선호</label>
+              </div>
+            </div>
+            <div class="question">
+              <span>상담에서 확인하고 싶은 부분</span>
+              <div class="choice-row">
+                <label><input type="radio" name="focus" value="routine" checked /> 루틴 설계</label>
+                <label><input type="radio" name="focus" value="posture" /> 자세 분석</label>
+                <label><input type="radio" name="focus" value="diet" /> 식단/습관</label>
+              </div>
+            </div>
+            <div class="question">
+              <span>위치</span>
+              <div class="location-search">
+                <div class="location-tabs" aria-label="위치 입력 방식">
+                  <button class="location-tab is-active" type="button">직접 입력</button>
+                </div>
+                <input
+                  class="location-input"
+                  id="locationInput"
+                  name="location"
+                  type="text"
+                  value="강남역"
+                  placeholder="예: 강남역, 선릉역, 논현동, 양재역"
+                  autocomplete="off"
+                />
+                <div class="nearby-list" id="nearbyBranches" aria-label="가까운 추천 지점"></div>
+              </div>
+            </div>
+            <div class="question">
+              <span>선호 상담 톤</span>
+              <div class="choice-row">
+                <label><input type="radio" name="tone" value="calm" checked /> 차분하게</label>
+                <label><input type="radio" name="tone" value="direct" /> 직관적으로</label>
+                <label><input type="radio" name="tone" value="push" /> 강하게 동기부여</label>
+              </div>
+            </div>
+            <div class="question">
+              <span>그 외 추가사항</span>
+              <textarea
+                class="extra-input"
+                id="extraNotes"
+                name="extra"
+                placeholder="예: 무릎 통증이 있어요, 평일 저녁 상담을 원해요, 다이어트 식단도 같이 보고 싶어요"
+              ></textarea>
+            </div>
+            <button class="cta survey-submit" type="submit">완료</button>
+            <div class="analysis" id="analysisResult">
+              현재 선택 기준으로 루틴 설계와 기초 자세 점검을 우선하는 상담이 적합합니다.
+            </div>
+          </form>
+
+          <div class="recommend-card">
+            <div class="recommend-head">
+              <div class="eyebrow">Recommended Trainers</div>
+              <h3>분석 기반 트레이너 추천</h3>
+              <p class="lead">트레이너를 선택하면 전체 창 화상상담 화면으로 연결됩니다.</p>
+            </div>
+            <div class="trainer-list" id="trainerList"></div>
+          </div>
+        </div>
+
+        <div class="call-room" aria-label="화상상담 미리보기">
+          <div class="connecting-screen" aria-hidden="true">
+            <div class="connecting-card">
+              <small>Connecting</small>
+              <strong id="connectingTitle">트레이너와 연결 중</strong>
+              <span>설문 내용을 정리하고 AI 자기소개 영상을 준비하고 있습니다.</span>
+              <div class="connecting-dots" aria-hidden="true">
+                <i></i>
+                <i></i>
+                <i></i>
+              </div>
+            </div>
+          </div>
+          <div class="call-topbar">
+            <div>
+              <div class="eyebrow">Live Preview</div>
+              <h3 id="callTitle">한지훈 트레이너와 연결 준비</h3>
+            </div>
+            <div class="call-topbar-actions">
+              <span class="status-pill" id="callStatus">AI 자기소개 재생 중</span>
+              <button class="close-call" type="button" id="closeCall" aria-label="화상상담 닫기">×</button>
+            </div>
+          </div>
+          <div class="video-grid">
+            <div class="video-main">
+              <div class="ai-trainer" aria-hidden="true">
+                <div class="ai-face"></div>
+                <div class="ai-body"></div>
+              </div>
+              <div class="caption" id="introCaption">
+                안녕하세요. 먼저 현재 운동 목적과 몸 상태를 확인하고, 무리 없이 시작할 수 있는 루틴을 제안드릴게요.
+              </div>
+            </div>
+            <div class="video-side">
+              <div class="mini-video">
+                <strong id="classVideoTitle">수업 영상 · 기초 근력 루틴</strong>
+                <div class="class-bars" aria-hidden="true">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+              <div class="mini-video">
+                <strong>회원 카메라 미리보기</strong>
+                <div class="class-bars" aria-hidden="true">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="call-actions">
+            <button class="ghost" type="button" id="playIntro">AI 자기소개 다시 보기</button>
+            <button class="cta" type="button" id="openTrial">체험 수업 신청하기</button>
+          </div>
+          <div class="trial-modal" id="trialModal" aria-label="체험 수업 신청 창">
+            <div class="trial-card">
+              <div class="trial-head">
+                <div>
+                  <div class="eyebrow">Trial Class</div>
+                  <h3>체험 수업 신청</h3>
+                </div>
+                <button class="trial-close" type="button" id="closeTrial" aria-label="체험 수업 신청 닫기">×</button>
+              </div>
+              <div class="trial-summary">
+                <div><span>추천 지점</span><strong id="trialBranch">강남 1호점</strong></div>
+                <div><span>담당 트레이너</span><strong id="trialTrainer">한지훈</strong></div>
+                <div><span>수업 유형</span><strong id="trialClass">기초 근력 루틴</strong></div>
+              </div>
+              <form class="trial-form" id="trialForm">
+                <div class="trial-form-grid">
+                  <label class="trial-field">
+                    <span>이름</span>
+                    <input name="name" type="text" placeholder="홍길동" />
+                  </label>
+                  <label class="trial-field">
+                    <span>연락처</span>
+                    <input name="phone" type="tel" placeholder="010-0000-0000" />
+                  </label>
+                </div>
+                <div class="trial-form-grid">
+                  <label class="trial-field">
+                    <span>희망 요일</span>
+                    <select name="day">
+                      <option>평일 저녁</option>
+                      <option>평일 오전</option>
+                      <option>주말</option>
+                    </select>
+                  </label>
+                  <label class="trial-field">
+                    <span>희망 시간</span>
+                    <select name="time">
+                      <option>18:00 - 21:00</option>
+                      <option>09:00 - 12:00</option>
+                      <option>13:00 - 17:00</option>
+                    </select>
+                  </label>
+                </div>
+                <div class="trial-result" id="trialResult">체험 수업 신청 내용이 저장되었습니다. 담당자가 확인 후 연락드릴 예정입니다.</div>
+                <button class="cta" type="submit">신청 완료</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer snap-page">
+        <strong>ACRO GYM FITNESS</strong>
+        <span>White marble brand intro concept · Separate static site</span>
+      </footer>
+    </main>
+
+    <script>
+      const skip = document.getElementById("skipIntro");
+      const intro = document.getElementById("intro");
+      const nav = document.querySelector(".nav");
+      const survey = document.getElementById("consultSurvey");
+      const trainerList = document.getElementById("trainerList");
+      const analysisResult = document.getElementById("analysisResult");
+      const callTitle = document.getElementById("callTitle");
+      const connectingTitle = document.getElementById("connectingTitle");
+      const callStatus = document.getElementById("callStatus");
+      const introCaption = document.getElementById("introCaption");
+      const classVideoTitle = document.getElementById("classVideoTitle");
+      const playIntro = document.getElementById("playIntro");
+      const callRoom = document.querySelector(".call-room");
+      const closeCall = document.getElementById("closeCall");
+      const openTrial = document.getElementById("openTrial");
+      const trialModal = document.getElementById("trialModal");
+      const closeTrial = document.getElementById("closeTrial");
+      const trialForm = document.getElementById("trialForm");
+      const trialResult = document.getElementById("trialResult");
+      const trialBranch = document.getElementById("trialBranch");
+      const trialTrainer = document.getElementById("trialTrainer");
+      const trialClass = document.getElementById("trialClass");
+      const branchButtons = document.querySelectorAll(".branch-button");
+      const branchStation = document.getElementById("branchStation");
+      const branchWalk = document.getElementById("branchWalk");
+      const branchRoute = document.getElementById("branchRoute");
+      const branchModal = document.getElementById("branchModal");
+      const closeBranchModal = document.getElementById("closeBranchModal");
+      const branchModalConsult = document.getElementById("branchModalConsult");
+      const branchModalVisualName = document.getElementById("branchModalVisualName");
+      const branchModalTitle = document.getElementById("branchModalTitle");
+      const branchModalLead = document.getElementById("branchModalLead");
+      const branchModalStation = document.getElementById("branchModalStation");
+      const branchModalWalk = document.getElementById("branchModalWalk");
+      const branchModalHours = document.getElementById("branchModalHours");
+      const branchModalRoute = document.getElementById("branchModalRoute");
+      const branchModalFacilities = document.getElementById("branchModalFacilities");
+      const branchModalFacilityLead = document.getElementById("branchModalFacilityLead");
+      const branchInfoTrack = document.getElementById("branchInfoTrack");
+      const branchInfoScrollButtons = document.querySelectorAll("[data-branch-info-scroll]");
+      const branchInfoDots = document.querySelectorAll("[data-branch-info-dot]");
+      const eventTabs = document.querySelectorAll(".event-tab");
+      const eventCards = document.querySelectorAll(".event-card");
+      const locationInput = document.getElementById("locationInput");
+      const nearbyBranches = document.getElementById("nearbyBranches");
+      const brandStoryScroll = document.getElementById("brandStoryScroll");
+      const brandScrollButtons = document.querySelectorAll("[data-brand-scroll]");
+      const brandSlideDots = document.querySelectorAll("[data-brand-dot]");
+      let callRevealTimer;
+      let callConnectTimer;
+      let currentTrainer = null;
+      let currentBranch = null;
+
+      const branches = {
+        gangnam: {
+          id: "gangnam",
+          name: "강남 1호점",
+          station: "강남역 11번 출구",
+          walk: "도보 3분",
+          route: "2호선 · 신분당선",
+          keywords: ["강남", "강남역", "역삼", "서초"],
+          hours: "평일 06:00 - 24:00 · 주말 09:00 - 21:00",
+          lead: "강남역 출퇴근 동선에 맞춘 프리미엄 웨이트 중심 지점입니다.",
+          facilities: ["프리웨이트존", "인바디 상담", "개인 락커", "샤워룸"],
+          facilityLead: "퇴근 후 바로 운동하기 좋은 프리웨이트 환경과 상담 동선을 갖춘 지점입니다.",
+        },
+        seolleung: {
+          id: "seolleung",
+          name: "선릉 2호점",
+          station: "선릉역 5번 출구",
+          walk: "도보 4분",
+          route: "2호선 · 수인분당선",
+          keywords: ["선릉", "선릉역", "삼성", "대치"],
+          hours: "평일 06:30 - 23:30 · 주말 09:00 - 20:00",
+          lead: "업무 밀집 지역 회원을 위한 점심/퇴근 전후 루틴 설계에 강한 지점입니다.",
+          facilities: ["머신존", "PT룸", "스트레칭존", "주차 안내"],
+          facilityLead: "직장인 회원이 짧은 시간 안에 루틴을 끝낼 수 있도록 머신 동선이 간결합니다.",
+        },
+        sinnonhyeon: {
+          id: "sinnonhyeon",
+          name: "신논현 3호점",
+          station: "신논현역 6번 출구",
+          walk: "도보 2분",
+          route: "9호선 급행",
+          keywords: ["신논현", "신논현역", "논현", "교보타워"],
+          hours: "평일 06:00 - 24:00 · 주말 10:00 - 21:00",
+          lead: "빠른 접근성과 고강도 컨디셔닝 수업을 함께 제공하는 도심형 지점입니다.",
+          facilities: ["고강도존", "그룹 PT", "폼체크존", "라운지"],
+          facilityLead: "운동 강도를 높이고 싶은 회원에게 맞는 컨디셔닝 수업과 폼 체크 공간을 제공합니다.",
+        },
+        yangjae: {
+          id: "yangjae",
+          name: "양재 4호점",
+          station: "양재역 9번 출구",
+          walk: "도보 5분",
+          route: "신분당선 · 3호선",
+          keywords: ["양재", "양재역", "도곡", "매봉"],
+          hours: "평일 06:30 - 23:00 · 주말 09:00 - 20:00",
+          lead: "초급 회원과 체형 관리 회원이 차분하게 시작하기 좋은 루틴 중심 지점입니다.",
+          facilities: ["초급 루틴존", "체형 상담", "유산소존", "샤워룸"],
+          facilityLead: "처음 운동을 시작하는 회원이 부담 없이 적응할 수 있는 기초 루틴 중심 공간입니다.",
+        },
+        euljiro: {
+          id: "euljiro",
+          name: "을지로 5호점",
+          station: "을지로입구역 2번 출구",
+          walk: "도보 3분",
+          route: "2호선",
+          keywords: ["을지로", "을지로입구", "명동", "시청", "종로"],
+          hours: "평일 06:00 - 23:30 · 주말 09:00 - 20:00",
+          lead: "도심 직장인에게 맞춘 짧고 밀도 높은 운동 상담과 회복 케어 지점입니다.",
+          facilities: ["회복 케어", "자세 분석", "샤워룸", "출근 전 루틴"],
+          facilityLead: "출근 전후 짧은 시간에 자세 분석과 회복 루틴을 함께 확인하기 좋습니다.",
+        },
+      };
+
+      const trainers = [
+        {
+          id: "jihoon",
+          name: "한지훈",
+          role: "근력 향상 · 초급 루틴",
+          initials: "HJ",
+          tags: ["strength", "beginner", "routine", "calm"],
+          classTitle: "수업 영상 · 기초 근력 루틴",
+          intro:
+            "안녕하세요. 먼저 현재 운동 목적과 몸 상태를 확인하고, 무리 없이 시작할 수 있는 근력 루틴을 제안드릴게요.",
+        },
+        {
+          id: "jieun",
+          name: "김지은",
+          role: "체형 관리 · 식단 습관",
+          initials: "JE",
+          tags: ["shape", "beginner", "diet", "calm"],
+          classTitle: "수업 영상 · 바디라인 루틴",
+          intro:
+            "안녕하세요. 체형 목표와 생활 패턴을 같이 보고, 지속 가능한 운동 강도와 식단 습관을 맞춰드릴게요.",
+        },
+        {
+          id: "minjae",
+          name: "서민재",
+          role: "자세 분석 · 회복 케어",
+          initials: "MJ",
+          tags: ["recovery", "steady", "posture", "direct"],
+          classTitle: "수업 영상 · 자세 교정 루틴",
+          intro:
+            "안녕하세요. 통증 부위와 움직임 패턴을 먼저 확인한 뒤, 회복과 퍼포먼스를 같이 올리는 방향으로 상담하겠습니다.",
+        },
+        {
+          id: "raon",
+          name: "이라온",
+          role: "고강도 · 동기부여 코칭",
+          initials: "RN",
+          tags: ["strength", "advanced", "routine", "push"],
+          classTitle: "수업 영상 · 고강도 컨디셔닝",
+          intro:
+            "안녕하세요. 목표 수치와 운동 경험을 기준으로 강도 높은 훈련 계획을 만들고, 끝까지 밀어붙일 수 있게 돕겠습니다.",
+        },
+      ];
+
+      function navHeight() {
+        return nav ? nav.offsetHeight : 72;
+      }
+
+      function scrollToSection(id, behavior = "smooth") {
+        if (id === "top") {
+          window.scrollTo({ top: 0, behavior });
+          return;
+        }
+
+        const target = document.getElementById(id);
+        if (!target) return;
+
+        const top = target.getBoundingClientRect().top + window.scrollY - navHeight();
+        window.scrollTo({ top: Math.max(0, top), behavior });
+      }
+
+      function syncVideoScrollMode() {
+        const videoSection = document.getElementById("videoConsult");
+        if (!videoSection) return;
+
+        const rect = videoSection.getBoundingClientRect();
+        const boundary = Math.max(navHeight() + 80, window.innerHeight * 0.18);
+        const isVideoInterior = rect.top < -boundary && rect.bottom > window.innerHeight + boundary;
+        document.documentElement.classList.toggle("free-video-scroll", isVideoInterior);
+      }
+
+      function finishIntro() {
+        if (document.body.classList.contains("ready")) return;
+        history.replaceState(null, "", window.location.pathname);
+        window.scrollTo(0, 0);
+        requestAnimationFrame(() => {
+          window.scrollTo(0, 0);
+          document.body.classList.add("ready");
+        });
+      }
+
+      skip.addEventListener("click", finishIntro);
+      intro.addEventListener("animationend", (event) => {
+        if (event.animationName === "introExit") finishIntro();
+      });
+
+      syncVideoScrollMode();
+      window.addEventListener("scroll", syncVideoScrollMode, { passive: true });
+      window.addEventListener("resize", syncVideoScrollMode);
+
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener("click", (event) => {
+          const id = link.getAttribute("href").slice(1);
+          if (!id) return;
+          event.preventDefault();
+          history.replaceState(null, "", id === "top" ? window.location.pathname : `#${id}`);
+          scrollToSection(id);
+          requestAnimationFrame(syncVideoScrollMode);
+        });
+      });
+
+      function getSurveyValues() {
+        return {
+          goal: new FormData(survey).get("goal"),
+          level: new FormData(survey).get("level"),
+          focus: new FormData(survey).get("focus"),
+          location: new FormData(survey).get("location"),
+          tone: new FormData(survey).get("tone"),
+          extra: new FormData(survey).get("extra"),
+        };
+      }
+
+      function getRecommendedBranches(locationText) {
+        const query = (locationText || "").replace(/\s/g, "").toLowerCase();
+        const list = Object.values(branches).map((branch) => {
+          const searchable = [branch.name, branch.station, branch.route, ...branch.keywords]
+            .join("")
+            .replace(/\s/g, "")
+            .toLowerCase();
+          const keywordHit = branch.keywords.some((keyword) => {
+            const normalized = keyword.replace(/\s/g, "").toLowerCase();
+            return query.includes(normalized) || normalized.includes(query);
+          });
+          const charScore = [...query].reduce((score, char) => {
+            return score + (searchable.includes(char) ? 8 : 0);
+          }, 0);
+          return {
+            ...branch,
+            score: (keywordHit ? 100 : 50) + charScore,
+          };
+        });
+
+        return list.sort((a, b) => b.score - a.score);
+      }
+
+      function renderNearbyBranches(recommended) {
+        nearbyBranches.innerHTML = recommended
+          .map((branch, index) => {
+            return `
+              <button class="nearby-card${index === 0 ? " is-active" : ""}" type="button" data-branch="${branch.id}">
+                <strong>${branch.name}</strong>
+                <small>${branch.station} · ${branch.walk} · ${branch.route}</small>
+              </button>
+            `;
+          })
+          .join("");
+
+        nearbyBranches.querySelectorAll(".nearby-card").forEach((card) => {
+          card.addEventListener("click", () => {
+            const branch = branches[card.dataset.branch];
+            if (!branch) return;
+            locationInput.value = `${branch.name} · ${branch.station}`;
+            renderRecommendations();
+          });
+        });
+      }
+
+      function scoreTrainer(trainer, values) {
+        return Object.values(values).reduce((score, value) => {
+          return score + (trainer.tags.includes(value) ? 25 : 0);
+        }, 0);
+      }
+
+      function analysisText(values, best) {
+        const goalMap = {
+          strength: "근력 향상",
+          shape: "체형 관리",
+          recovery: "통증/회복",
+        };
+        const focusMap = {
+          routine: "루틴 설계",
+          posture: "자세 분석",
+          diet: "식단/습관",
+        };
+        const branch = getRecommendedBranches(values.location)[0];
+        const extra = values.extra?.trim()
+          ? ` 추가 요청으로 "${values.extra.trim()}" 내용을 상담 전 확인하겠습니다.`
+          : "";
+        return `${goalMap[values.goal]} 목표와 ${focusMap[values.focus]} 니즈가 강합니다. 입력한 위치 기준으로 ${branch.name}이 가장 가까운 추천 지점이며, ${branch.station}에서 ${branch.walk} 거리입니다. ${best.name} 트레이너가 현재 설문과 가장 잘 맞고, 첫 상담에서는 운동 가능 범위와 주간 루틴을 먼저 잡는 흐름이 좋습니다.${extra}`;
+      }
+
+      function openCallRoom(trainer) {
+        callRoom.classList.add("is-open");
+        callRoom.classList.add("is-connecting");
+        callRoom.classList.remove("is-connected");
+        callRoom.classList.remove("details-visible");
+        document.body.classList.add("in-call");
+        window.clearTimeout(callRevealTimer);
+        window.clearTimeout(callConnectTimer);
+        connectingTitle.textContent = `${trainer.name} 트레이너와 연결 중`;
+        callTitle.textContent = `${trainer.name} 트레이너와 화상상담 연결 중`;
+        callStatus.textContent = "연결 중";
+
+        callConnectTimer = window.setTimeout(() => {
+          callRoom.classList.remove("is-connecting");
+          callRoom.classList.add("is-connected");
+          callTitle.textContent = `${trainer.name} 트레이너와 화상상담 중`;
+          callStatus.textContent = "AI 영상 상담 진행 중";
+        }, 1200);
+
+        callRevealTimer = window.setTimeout(() => {
+          callRoom.classList.add("details-visible");
+        }, 1850);
+      }
+
+      function closeCallRoom() {
+        callRoom.classList.remove("is-open");
+        callRoom.classList.remove("is-connecting");
+        callRoom.classList.remove("is-connected");
+        callRoom.classList.remove("details-visible");
+        document.body.classList.remove("in-call");
+        window.clearTimeout(callRevealTimer);
+        window.clearTimeout(callConnectTimer);
+        closeTrialModal();
+      }
+
+      function openTrialModal() {
+        const values = getSurveyValues();
+        currentBranch = getRecommendedBranches(values.location)[0];
+        trialBranch.textContent = currentBranch.name;
+        trialTrainer.textContent = currentTrainer ? currentTrainer.name : "추천 트레이너";
+        trialClass.textContent = currentTrainer ? currentTrainer.classTitle.replace("수업 영상 · ", "") : "체험 수업";
+        trialResult.classList.remove("is-visible");
+        trialModal.classList.add("is-open");
+      }
+
+      function closeTrialModal() {
+        trialModal.classList.remove("is-open");
+      }
+
+      function openBranchModal(branchId) {
+        const branch = branches[branchId];
+        if (!branch) return;
+        branchModalVisualName.textContent = branch.name;
+        branchModalTitle.textContent = branch.name;
+        branchModalLead.textContent = branch.lead;
+        branchModalStation.textContent = branch.station;
+        branchModalWalk.textContent = branch.walk;
+        branchModalHours.textContent = branch.hours;
+        branchModalRoute.textContent = branch.route;
+        branchModalFacilities.innerHTML = branch.facilities.map((item) => `<span>${item}</span>`).join("");
+        branchModalFacilityLead.textContent = branch.facilityLead;
+        branchInfoTrack.scrollTo({ left: 0, behavior: "auto" });
+        updateBranchInfoDots();
+        branchModal.classList.add("is-open");
+      }
+
+      function closeBranchInfo() {
+        branchModal.classList.remove("is-open");
+      }
+
+      function updateBranchInfoDots() {
+        const index = Math.round(branchInfoTrack.scrollLeft / Math.max(1, branchInfoTrack.clientWidth));
+        branchInfoDots.forEach((dot) => {
+          dot.classList.toggle("is-active", Number(dot.dataset.branchInfoDot) === index);
+        });
+      }
+
+      function selectBranch(branchId) {
+        const branch = branches[branchId];
+        if (!branch) return;
+
+        branchButtons.forEach((button) => {
+          button.classList.toggle("is-active", button.dataset.branch === branchId);
+        });
+
+        document.querySelectorAll(".station[data-branch], .station-label[data-branch]").forEach((item) => {
+          item.classList.toggle("is-active", item.dataset.branch === branchId);
+        });
+
+        branchStation.textContent = branch.station;
+        branchWalk.textContent = branch.walk;
+        branchRoute.textContent = branch.route;
+      }
+
+      function selectTrainer(trainer, shouldOpen = false) {
+        currentTrainer = trainer;
+        document.querySelectorAll(".trainer-button").forEach((button) => {
+          button.classList.toggle("is-active", button.dataset.trainer === trainer.id);
+        });
+        callTitle.textContent = `${trainer.name} 트레이너와 화상상담 미리보기`;
+        introCaption.textContent = trainer.intro;
+        classVideoTitle.textContent = trainer.classTitle;
+        if (shouldOpen) openCallRoom(trainer);
+      }
+
+      function renderRecommendations() {
+        const values = getSurveyValues();
+        const ranked = trainers
+          .map((trainer) => ({ ...trainer, score: scoreTrainer(trainer, values) }))
+          .sort((a, b) => b.score - a.score);
+
+        trainerList.innerHTML = "";
+        ranked.forEach((trainer, index) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = `trainer-button${index === 0 ? " is-active" : ""}`;
+          button.dataset.trainer = trainer.id;
+          button.innerHTML = `
+            <span class="avatar">${trainer.initials}</span>
+            <span>
+              <strong>${trainer.name} 트레이너</strong>
+              <small>${trainer.role}</small>
+            </span>
+            <span class="match-score">${Math.max(trainer.score, 62)}%</span>
+          `;
+          button.addEventListener("click", () => selectTrainer(trainer, true));
+          trainerList.appendChild(button);
+        });
+
+        analysisResult.textContent = analysisText(values, ranked[0]);
+        const recommendedBranches = getRecommendedBranches(values.location);
+        renderNearbyBranches(recommendedBranches);
+        selectBranch(recommendedBranches[0].id);
+        selectTrainer(ranked[0]);
+      }
+
+      survey.addEventListener("submit", (event) => {
+        event.preventDefault();
+        renderRecommendations();
+        scrollToSection("videoConsult");
+      });
+
+      survey.addEventListener("change", renderRecommendations);
+      survey.addEventListener("input", renderRecommendations);
+
+      locationInput.addEventListener("input", renderRecommendations);
+
+      playIntro.addEventListener("click", () => {
+        const current = introCaption.textContent;
+        introCaption.textContent = "AI 자기소개 영상을 다시 생성하는 중입니다...";
+        window.setTimeout(() => {
+          introCaption.textContent = current;
+        }, 650);
+      });
+
+      closeCall.addEventListener("click", closeCallRoom);
+      openTrial.addEventListener("click", openTrialModal);
+      closeTrial.addEventListener("click", closeTrialModal);
+      closeBranchModal.addEventListener("click", closeBranchInfo);
+      branchModal.addEventListener("click", (event) => {
+        if (event.target === branchModal) closeBranchInfo();
+      });
+      branchModalConsult.addEventListener("click", () => {
+        closeBranchInfo();
+      });
+      trialModal.addEventListener("click", (event) => {
+        if (event.target === trialModal) closeTrialModal();
+      });
+      trialForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        trialResult.classList.add("is-visible");
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          if (branchModal.classList.contains("is-open")) closeBranchInfo();
+          else if (trialModal.classList.contains("is-open")) closeTrialModal();
+          else closeCallRoom();
+        }
+      });
+
+      branchButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          selectBranch(button.dataset.branch);
+          openBranchModal(button.dataset.branch);
+        });
+      });
+
+      branchInfoScrollButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const direction = Number(button.dataset.branchInfoScroll || 1);
+          branchInfoTrack.scrollBy({ left: direction * branchInfoTrack.clientWidth, behavior: "smooth" });
+        });
+      });
+
+      branchInfoDots.forEach((dot) => {
+        dot.addEventListener("click", () => {
+          const index = Number(dot.dataset.branchInfoDot || 0);
+          branchInfoTrack.scrollTo({ left: index * branchInfoTrack.clientWidth, behavior: "smooth" });
+        });
+      });
+
+      branchInfoTrack.addEventListener("scroll", updateBranchInfoDots, { passive: true });
+      window.addEventListener("resize", updateBranchInfoDots);
+
+      eventTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          const filter = tab.dataset.eventFilter;
+          eventTabs.forEach((item) => item.classList.toggle("is-active", item === tab));
+          eventCards.forEach((card) => {
+            card.classList.toggle("is-hidden", card.dataset.eventStatus !== filter);
+          });
+        });
+      });
+
+      brandScrollButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const direction = Number(button.dataset.brandScroll || 1);
+          const distance = brandStoryScroll.clientWidth;
+          brandStoryScroll.scrollBy({ left: direction * distance, behavior: "smooth" });
+        });
+      });
+
+      function updateBrandDots() {
+        const index = Math.round(brandStoryScroll.scrollLeft / Math.max(1, brandStoryScroll.clientWidth));
+        brandSlideDots.forEach((dot) => {
+          dot.classList.toggle("is-active", Number(dot.dataset.brandDot) === index);
+        });
+      }
+
+      brandSlideDots.forEach((dot) => {
+        dot.addEventListener("click", () => {
+          const index = Number(dot.dataset.brandDot || 0);
+          brandStoryScroll.scrollTo({ left: index * brandStoryScroll.clientWidth, behavior: "smooth" });
+        });
+      });
+
+      brandStoryScroll.addEventListener("scroll", updateBrandDots, { passive: true });
+      window.addEventListener("resize", updateBrandDots);
+
+      renderRecommendations();
+    </script>
+  </body>
+</html>
