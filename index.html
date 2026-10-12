@@ -43,8 +43,10 @@
         scroll-padding-top: var(--nav-h);
       }
 
-      html.free-video-scroll {
+      html.free-video-scroll,
+      html.free-shop-scroll {
         scroll-snap-type: none;
+        scroll-behavior: auto;
       }
 
       body {
@@ -385,23 +387,10 @@
       }
 
       .logo-badge {
+        display: block;
         width: 35px;
-        aspect-ratio: 1;
-        border: 3px solid var(--gold);
-        border-radius: 50%;
-        position: relative;
-        background: rgba(255, 255, 255, 0.6);
-      }
-
-      .logo-badge::before {
-        content: "";
-        position: absolute;
-        left: 8px;
-        right: 8px;
-        top: 17px;
-        height: 3px;
-        border-radius: 3px;
-        background: var(--gold-bright);
+        height: 35px;
+        flex: none;
       }
 
       .nav-links {
@@ -495,9 +484,12 @@
         top: 43%;
         z-index: 2;
         width: min(34vw, 430px);
-        aspect-ratio: 0.88;
-        display: grid;
-        place-items: center;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: clamp(1rem, 2vw, 1.75rem);
+        padding: clamp(0.8rem, 1.5vw, 1.2rem);
         overflow: hidden;
         transform: translateY(-50%);
         border: 1px solid rgba(255, 255, 255, 0.78);
@@ -519,58 +511,12 @@
         animation: introImageSweep 4.8s ease-in-out infinite;
       }
 
-      .hero-intro-card .intro-emblem {
-        width: min(62%, 270px);
-      }
-
-      .hero-intro-card .intro-image-copy {
-        left: 1rem;
-        right: 1rem;
-        bottom: 1.25rem;
-        padding: 0.9rem;
-      }
-
-      .hero-logo-mark {
+      .hero-brand-lockup {
         position: relative;
         z-index: 3;
-        width: min(62%, 280px);
-        aspect-ratio: 1;
-        transform: translateY(-10%);
-        border: clamp(8px, 1.3vw, 13px) solid var(--gold);
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.28);
-        box-shadow:
-          inset 0 0 0 9px rgba(255, 255, 255, 0.74),
-          inset 0 0 0 18px rgba(200, 138, 42, 0.2),
-          0 28px 70px rgba(200, 138, 42, 0.24);
-      }
-
-      .hero-logo-mark::before {
-        content: "";
-        position: absolute;
-        left: 44%;
-        top: 19%;
-        width: 12%;
-        aspect-ratio: 1;
-        border-radius: 50%;
-        background: var(--gold-bright);
-      }
-
-      .hero-logo-mark::after {
-        content: "";
-        position: absolute;
-        left: 23%;
-        right: 23%;
-        top: 53%;
-        height: 6%;
-        border-radius: 999px;
-        background:
-          linear-gradient(90deg, transparent 0 10%, var(--gold-bright) 10% 90%, transparent 90%),
-          linear-gradient(110deg, transparent 0 26%, var(--gold) 27% 34%, transparent 35%),
-          linear-gradient(70deg, transparent 0 66%, var(--gold) 67% 74%, transparent 75%);
-        background-repeat: no-repeat;
-        background-size: 100% 100%, 100% 240%, 100% 240%;
-        background-position: center;
+        display: block;
+        width: 100%;
+        height: auto;
       }
 
       .hero-content {
@@ -1364,16 +1310,7 @@
       }
 
       .brand-slide-mark {
-        position: absolute;
-        top: clamp(3.2rem, 5vw, 4.8rem);
-        right: clamp(1.2rem, 3vw, 2.2rem);
-        width: clamp(92px, 14vw, 170px);
-        aspect-ratio: 1;
-        border: clamp(5px, 0.8vw, 9px) solid rgba(200, 138, 42, 0.82);
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.34);
-        box-shadow: 0 20px 50px rgba(72, 58, 34, 0.16);
-        backdrop-filter: blur(10px);
+        display: none;
       }
 
       .brand-slide-mark::before {
@@ -3098,6 +3035,26 @@
           scroll-behavior: auto !important;
         }
       }
+
+      .shop-section { min-height: calc(100svh - var(--nav-h)); background: linear-gradient(135deg, #fffdf9, #f0e8dc); }
+      .shop-heading { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+      .shop-heading h2 { font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1; margin: .7rem 0 1rem; }
+      .shop-heading p { color: var(--muted); line-height: 1.7; margin: 0; }
+      .shop-filters { display: flex; flex-wrap: wrap; gap: .5rem; }
+      .shop-filter { border: 1px solid var(--line); background: transparent; color: var(--ink); border-radius: 999px; padding: .7rem 1.15rem; font: inherit; cursor: pointer; }
+      .shop-filter[aria-pressed="true"] { background: var(--charcoal); color: white; border-color: var(--charcoal); }
+      .shop-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+      .shop-product { background: rgba(255,255,255,.75); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
+      .shop-product[hidden] { display: none; }
+      .shop-art { aspect-ratio: 1.2; display: grid; place-items: center; background: radial-gradient(ellipse at center, #fffaf0, #e8dfd1); padding: 1.5rem; }
+      .shop-art svg { width: 100%; height: 100%; max-height: 260px; filter: drop-shadow(0 16px 12px rgba(54,42,25,.15)); }
+      .shop-product-copy { padding: 1.5rem; }
+      .shop-product-copy small { color: var(--gold); font-weight: 800; letter-spacing: .1em; }
+      .shop-product-copy h3 { margin: .6rem 0; font-size: 1.3rem; }
+      .shop-product-copy p { color: var(--muted); line-height: 1.65; min-height: 3.3em; }
+      .shop-product-copy button { width: 100%; padding: .9rem; border: 1px solid var(--line); border-radius: 10px; color: var(--muted); background: #f5f1ea; font: inherit; }
+      .shop-note { color: var(--muted); font-size: .85rem; line-height: 1.6; margin: 1.5rem 0 0; }
+      @media (max-width: 760px) { .shop-grid { grid-template-columns: 1fr; } .shop-art { aspect-ratio: 1.6; } }
     </style>
   </head>
   <body>
@@ -3125,7 +3082,14 @@
     <main class="site">
       <nav class="nav" aria-label="주요 메뉴">
         <a class="logo" href="#top" aria-label="ACRO GYM 홈">
-          <span class="logo-badge" aria-hidden="true"></span>
+          <svg class="logo-badge" viewBox="72 35 96 96" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="120" cy="83" r="43" stroke="#c88a2a" stroke-width="3.5" />
+              <circle cx="120" cy="83" r="37.5" stroke="#e6cda4" stroke-width="2.5" />
+              <path d="M99 82 Q120 78 141 82 M99 80 V86 M141 80 V86 M111 92 L107 101 M129 92 L133 101" stroke="#d7a345" stroke-width="3.5" />
+            </g>
+            <circle cx="120" cy="66" r="3.2" fill="#d7a345" />
+          </svg>
           <span>ACRO GYM</span>
         </a>
         <div class="nav-links">
@@ -3134,6 +3098,7 @@
           <a href="#branches">호점 소개</a>
           <a href="#events">이벤트</a>
           <a href="#videoConsult">화상상담</a>
+          <a href="#shop">Shop</a>
         </div>
         <span class="cta-bubble-wrap">
           <span class="gift-bubble">사은품 이벤트</span>
@@ -3155,11 +3120,34 @@
           </div>
         </div>
         <div class="hero-intro-card" aria-hidden="true">
-          <div class="hero-logo-mark"></div>
-          <div class="intro-image-copy">
-            <small>Brand Mark</small>
-            <strong>ACRO GYM<br />Fitness</strong>
-          </div>
+          <svg class="hero-brand-lockup" viewBox="24 24 192 170" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="heroGoldMetal" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#e2b35b" />
+                <stop offset="1" stop-color="#c88a2a" />
+              </linearGradient>
+              <filter id="heroLogoRelief" x="-45%" y="-45%" width="190%" height="200%" color-interpolation-filters="sRGB">
+                <feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#c88a2a" flood-opacity="0.24" />
+              </filter>
+              <filter id="heroWordGlow" x="-20%" y="-60%" width="140%" height="240%" color-interpolation-filters="sRGB">
+                <feDropShadow dx="0" dy="0.5" stdDeviation="0" flood-color="#fffaf0" flood-opacity="0.85" />
+                <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#896a36" flood-opacity="0.2" />
+              </filter>
+            </defs>
+            <g transform="translate(120 83) scale(1.14) translate(-120 -83)">
+            <g fill="none" stroke="url(#heroGoldMetal)" filter="url(#heroLogoRelief)">
+              <circle cx="120" cy="83" r="43" stroke="#c88a2a" stroke-width="3.5" />
+              <circle cx="120" cy="83" r="37.5" stroke="#e6cda4" stroke-width="2.5" />
+              <path d="M99 82 Q120 78 141 82 M99 80 V86 M141 80 V86" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M111 92 L107 101 M129 92 L133 101" stroke-width="3.5" stroke-linecap="round" />
+            </g>
+            <circle cx="120" cy="66" r="3.2" fill="url(#heroGoldMetal)" filter="url(#heroLogoRelief)" />
+            </g>
+            <g fill="#39352f" text-anchor="middle" font-family="Arial Narrow, Impact, sans-serif" font-weight="900">
+              <text x="120" y="166" fill="#c88a2a" filter="url(#heroWordGlow)" font-size="35" textLength="170" lengthAdjust="spacingAndGlyphs">ACRO GYM</text>
+              <text x="120" y="184" fill="#22201d" font-size="16" textLength="66" lengthAdjust="spacingAndGlyphs">FITNESS</text>
+            </g>
+          </svg>
         </div>
         <div class="stats" aria-label="브랜드 주요 수치">
           <div class="stat"><strong>24H</strong><span>라이프스타일 맞춤 운영</span></div>
@@ -3333,7 +3321,6 @@
         <div class="brand-stage">
           <div class="brand-slide-track" id="brandStoryScroll" aria-label="ACRO GYM 브랜드 상세 페이지">
             <article class="brand-slide" style="--brand-bg: url('assets/brand-motto-bg.png')">
-              <div class="brand-slide-mark" aria-hidden="true"></div>
               <div class="brand-slide-content">
                 <small>01 Motto</small>
                 <h3>운동이 일상으로 자리 잡는 곳</h3>
@@ -3349,7 +3336,6 @@
               </div>
             </article>
             <article class="brand-slide" style="--brand-bg: url('assets/brand-education-bg.png')">
-              <div class="brand-slide-mark" aria-hidden="true"></div>
               <div class="brand-slide-content">
                 <small>02 Education</small>
                 <h3>트레이너 교육과정</h3>
@@ -3365,7 +3351,6 @@
               </div>
             </article>
             <article class="brand-slide" style="--brand-bg: url('assets/brand-consulting-bg.png')">
-              <div class="brand-slide-mark" aria-hidden="true"></div>
               <div class="brand-slide-content">
                 <small>03 Consulting</small>
                 <h3>화상상담 중심의 첫 만남</h3>
@@ -3381,7 +3366,6 @@
               </div>
             </article>
             <article class="brand-slide" style="--brand-bg: url('assets/brand-care-bg.png')">
-              <div class="brand-slide-mark" aria-hidden="true"></div>
               <div class="brand-slide-content">
                 <small>04 Care</small>
                 <h3>등록 이후 관리 기준</h3>
@@ -3516,7 +3500,17 @@
               </div>
             </div>
             <div class="question">
-              <span>그 외 추가사항</span>
+              <span>희망 운동 시간대</span>
+              <div class="choice-row">
+                <label><input type="radio" name="preferredTime" value="평일 오전" /> 평일 오전</label>
+                <label><input type="radio" name="preferredTime" value="평일 오후" /> 평일 오후</label>
+                <label><input type="radio" name="preferredTime" value="평일 저녁" /> 평일 저녁</label>
+                <label><input type="radio" name="preferredTime" value="주말" /> 주말</label>
+                <label><input type="radio" name="preferredTime" value="시간 협의" checked /> 시간 협의</label>
+              </div>
+            </div>
+            <div class="question">
+              <label for="extraNotes" style="display: block; font-weight: 800; line-height: 1.6;">그 외 추가사항</label>
               <textarea
                 class="extra-input"
                 id="extraNotes"
@@ -3647,7 +3641,14 @@
         </div>
       </section>
 
-      <footer class="footer snap-page">
+      <section class="section shop-section natural-snap-page" id="shop" aria-labelledby="shopTitle">
+        <div class="shop-heading"><div><div class="eyebrow">ACRO GYM COLLECTION</div><h2 id="shopTitle">Shop</h2><p>운동의 순간을 일상까지.<br />아크로짐의 감각을 담은 웨어와 에센셜을 만나보세요.</p></div>
+        <div class="shop-filters" role="group" aria-label="상품 카테고리"><button class="shop-filter" data-shop-filter="all" aria-pressed="true">전체</button><button class="shop-filter" data-shop-filter="apparel" aria-pressed="false">웨어</button><button class="shop-filter" data-shop-filter="accessories" aria-pressed="false">액세서리</button></div></div>
+        <div class="shop-grid"><article class="shop-product" data-shop-category="apparel"><div class="shop-art"><svg viewBox="0 0 300 280" role="img" aria-label="시그니처 트레이닝 티셔츠 디자인 시안"><path d="M78 48 48 72 20 118 59 142 82 111 82 238 218 238 218 111 241 142 280 118 252 72 222 48 185 36Q150 75 115 36Z" fill="#282522"/><path d="M115 36Q150 75 185 36" fill="none" stroke="#49433b" stroke-width="8"/><text x="150" y="125" text-anchor="middle" fill="#dfb05b" font-size="15" font-weight="700">ACRO GYM</text></svg></div><div class="shop-product-copy"><small>APPAREL</small><h3>시그니처 트레이닝 티셔츠</h3><p>운동과 일상에 자연스럽게 어울리는 아크로짐의 시그니처 웨어.</p><button type="button" disabled>판매 준비 중</button></div></article><article class="shop-product" data-shop-category="accessories"><div class="shop-art"><svg viewBox="0 0 300 280" role="img" aria-label="프리미엄 운동 타월 디자인 시안"><rect x="54" y="48" width="192" height="198" rx="12" fill="#f9f5e9"/><path d="M54 205h192M54 219h192" stroke="#d5bd8e" stroke-width="5"/><text x="150" y="145" text-anchor="middle" fill="#b68232" font-size="18" font-weight="700">ACRO GYM</text></svg></div><div class="shop-product-copy"><small>ACCESSORIES</small><h3>프리미엄 운동 타월</h3><p>가벼운 운동부터 집중하는 순간까지, 곁에 두는 데일리 타월.</p><button type="button" disabled>판매 준비 중</button></div></article><article class="shop-product" data-shop-category="accessories"><div class="shop-art"><svg viewBox="0 0 300 280" role="img" aria-label="데일리 워터 보틀 디자인 시안"><rect x="119" y="22" width="62" height="32" rx="8" fill="#282522"/><rect x="102" y="52" width="96" height="204" rx="25" fill="#d9bd84"/><path d="M116 77v142" stroke="#f6e9cf" stroke-width="7" stroke-linecap="round"/><text x="150" y="144" text-anchor="middle" fill="#4b3820" font-size="12" font-weight="700">ACRO</text><text x="150" y="164" text-anchor="middle" fill="#4b3820" font-size="12" font-weight="700">GYM</text></svg></div><div class="shop-product-copy"><small>ACCESSORIES</small><h3>데일리 워터 보틀</h3><p>운동하는 하루의 수분 루틴을 함께하는 심플한 워터 보틀.</p><button type="button" disabled>판매 준비 중</button></div></article></div>
+        <p class="shop-note">컬렉션 출시 준비 중입니다. 상품 이미지와 구성은 디자인 시안이며, 판매 일정과 가격은 추후 안내됩니다.</p>
+      </section>
+
+      <footer class="footer">
         <strong>ACRO GYM FITNESS</strong>
         <span>White marble brand intro concept · Separate static site</span>
       </footer>
@@ -3826,6 +3827,13 @@
         const target = document.getElementById(id);
         if (!target) return;
 
+        if (id !== "videoConsult") {
+          document.documentElement.classList.remove("free-video-scroll");
+        }
+        if (id !== "shop") {
+          document.documentElement.classList.remove("free-shop-scroll");
+        }
+
         const top = target.getBoundingClientRect().top + window.scrollY - navHeight();
         window.scrollTo({ top: Math.max(0, top), behavior });
       }
@@ -3838,6 +3846,14 @@
         const boundary = Math.max(navHeight() + 80, window.innerHeight * 0.18);
         const isVideoInterior = rect.top < -boundary && rect.bottom > window.innerHeight + boundary;
         document.documentElement.classList.toggle("free-video-scroll", isVideoInterior);
+
+        const shopSection = document.getElementById("shop");
+        if (!shopSection) return;
+
+        const shopRect = shopSection.getBoundingClientRect();
+        const viewportCenter = window.innerHeight / 2;
+        const isShopInterior = shopRect.top <= viewportCenter && shopRect.bottom >= viewportCenter;
+        document.documentElement.classList.toggle("free-shop-scroll", isShopInterior);
       }
 
       function finishIntro() {
@@ -3878,6 +3894,7 @@
           location: new FormData(survey).get("location"),
           tone: new FormData(survey).get("tone"),
           extra: new FormData(survey).get("extra"),
+          preferredTime: new FormData(survey).get("preferredTime"),
         };
       }
 
@@ -3947,7 +3964,7 @@
         const extra = values.extra?.trim()
           ? ` 추가 요청으로 "${values.extra.trim()}" 내용을 상담 전 확인하겠습니다.`
           : "";
-        return `${goalMap[values.goal]} 목표와 ${focusMap[values.focus]} 니즈가 강합니다. 입력한 위치 기준으로 ${branch.name}이 가장 가까운 추천 지점이며, ${branch.station}에서 ${branch.walk} 거리입니다. ${best.name} 트레이너가 현재 설문과 가장 잘 맞고, 첫 상담에서는 운동 가능 범위와 주간 루틴을 먼저 잡는 흐름이 좋습니다.${extra}`;
+        return `${goalMap[values.goal]} 목표와 ${focusMap[values.focus]} 니즈가 강합니다. 입력한 위치 기준으로 ${branch.name}이 가장 가까운 추천 지점이며, ${branch.station}에서 ${branch.walk} 거리입니다. ${best.name} 트레이너가 현재 설문과 가장 잘 맞고, 첫 상담에서는 운동 가능 범위와 주간 루틴을 먼저 잡는 흐름이 좋습니다. 희망 운동 시간대는 ${values.preferredTime || "시간 협의"}입니다.${extra}`;
       }
 
       function openCallRoom(trainer) {
@@ -4190,6 +4207,15 @@
       brandStoryScroll.addEventListener("scroll", updateBrandDots, { passive: true });
       window.addEventListener("resize", updateBrandDots);
 
+
+      document.querySelectorAll('[data-shop-filter]').forEach(button => {
+        button.addEventListener('click', () => {
+          document.querySelectorAll('[data-shop-filter]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+          document.querySelectorAll('[data-shop-category]').forEach(product => {
+            product.hidden = button.dataset.shopFilter !== 'all' && product.dataset.shopCategory !== button.dataset.shopFilter;
+          });
+        });
+      });
       renderRecommendations();
     </script>
   </body>
